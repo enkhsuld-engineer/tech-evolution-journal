@@ -1,0 +1,13 @@
+[
+  {
+    "id": "this-is-the-test",
+    "title": "THIS IS THE TEST",
+    "date": "2025-10-30",
+    "tags": ["test"],
+    "type": "md",
+    "summary": "Test post that also embeds a PDF.",
+    "content": "posts/this-is-the-test.md",
+    "pdfUrl": "docs/this-is-the-test.pdf",
+    "hero": "images/this-is-the-test.jpg"
+  }
+]
