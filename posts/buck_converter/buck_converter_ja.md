@@ -2,9 +2,10 @@ PSIM シミュレーションを用いて、入力 50 V をオープンループ
 スイッチング素子、インダクタ、コンデンサの定数が出力電圧・リップル・過渡特性に与える影響を解析した。
 
 📄 **PDF ダウンロード**  
-[日本語版を開く](/documents/buck_converter/buck_converter_jp.pdf)
+[日本語版を開く](/tech-evolution-journal/documents/buck_converter/buck_converter_jp.pdf)
 
 ---
 **使用ソフト:** PSIM  
 **キーワード:** バックコンバータ, DC–DC コンバータ, リップル, 過渡応答
+
 
