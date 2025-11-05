@@ -2,8 +2,8 @@
   {
     "id": "p001",
     "title": "Basic Buck Converter Analysis",
-    "title_ja": "バックコンバータの基礎動作解析",
-    "title_mn": "Buck хувиргагчийн үндсэн ажиллагааны шинжилгээ",
+    "title_ja": "降圧型コンバータの基礎動作解析",
+    "title_mn": "Buck хувиргагчийн үндсэн ажиллагаа",
     "summary": "Basic operation and PSIM simulation of a 50V–25V buck converter under open-loop PWM control.",
     "summary_ja": "PSIM による 50V→25V 降圧の基本動作解析。",
     "summary_mn": "PSIM симуляцаар 50V оролтыг 25V болгон бууруулсан Buck хувиргагчийн үндсэн ажиллагаа.",
@@ -14,6 +14,23 @@
     "content": "posts/buck_converter/buck_converter_en.md",
     "content_ja": "posts/buck_converter/buck_converter_ja.md",
     "content_mn": "posts/buck_converter/buck_converter_mn.md"
-  }
+  },
+  {
+  "id": "p002",
+  "title": "Basic Boost Converter Analysis",
+  "title_ja": "昇圧型コンバータの基礎動作解析",
+  "title_mn": "Boost хувиргагчийн үндсэн ажиллагаа",
+  "summary": "Basic operation and PSIM simulation of a 25V–50V boost converter under open-loop PWM control.",
+  "summary_ja": "PSIM による 25V→50V 昇圧の基本動作解析。",
+  "summary_mn": "PSIM симуляцаар 25V оролтыг 50V болгон өсгөсөн Boost хувиргагчийн үндсэн ажиллагаа.",
+  "date": "2025-11-05",
+  "tags": ["boost","dc-dc","psim"],
+  "hero": "images/thumbnail.png",
+  "type": "md",
+  "content": "posts/boost_converter/boost_converter_en.md",
+  "content_ja": "posts/boost_converter/boost_converter_ja.md",
+  "content_mn": "posts/boost_converter/boost_converter_mn.md"
+}
+
 ]
 
