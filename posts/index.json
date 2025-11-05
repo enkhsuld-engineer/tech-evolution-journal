@@ -30,7 +30,24 @@
   "content": "posts/boost_converter/boost_converter_en.md",
   "content_ja": "posts/boost_converter/boost_converter_ja.md",
   "content_mn": "posts/boost_converter/boost_converter_mn.md"
+},
+  {
+  "id": "p003",
+  "title": "Basic Buck-Boost Converter Analysis",
+  "title_ja": "昇降圧型コンバータの基礎動作解析",
+  "title_mn": "Buck-Boost хувиргагчийн үндсэн ажиллагаа",
+  "summary": "Fundamental operation and PSIM simulation of a 25V–50V / 25V–11V buck-boost converter under open-loop PWM control.",
+  "summary_ja": "PSIM による 25V↔50V（昇圧）および 25V↔11V（降圧）の基本動作解析。",
+  "summary_mn": "PSIM симуляцаар 25V-оос 50V (boost) ба 25V-оос 11V (buck) горимын Buck-Boost хувиргагчийн үндсэн ажиллагаа.",
+  "date": "2025-11-05",
+  "tags": ["buck-boost","dc-dc","psim"],
+  "hero": "images/thumbnail.png",
+  "type": "md",
+  "content": "posts/buck_boost_converter/buck_boost_converter_en.md",
+  "content_ja": "posts/buck_boost_converter/buck_boost_converter_ja.md",
+  "content_mn": "posts/buck_boost_converter/buck_boost_converter_mn.md"
 }
+
 
 ]
 
