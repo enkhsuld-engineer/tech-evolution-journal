@@ -718,19 +718,32 @@ if (hiddenTagsA.length > 0) {
       </div>
       <div class="pdfwrap"><object data="${pdfUrl}" type="application/pdf"></object></div>
     </div>` : '';
+  
+const theme = (p.theme || '').toString().trim().toLowerCase();
+const THEME_COLORS = {
+  power:    '#EA9D0C', // amber
+  control:  '#2D7CF7', // blue
+  embedded: '#00A884', // teal
+  theory:   '#8A5CF6', // purple
+  hardware: '#FF5A5F', // red
+  electric: '#EA9D0C'  // if you used this earlier
+};
+const corner = THEME_COLORS[theme] || '#EA9D0C'; // fallback
 
-  $('#articleView').innerHTML = `
-    <div class="card">
-      <div class="meta small" style="color:var(--muted)">${meta}${tagBadges ? sep + tagBadges : ''}</div>
-      <h1 style="margin-top:8px">${title}</h1>
-      ${heroBlock}
-      ${bodyHtml}
-      ${pdfBlock}
-      <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn" onclick="go('home')">&#11013; ${t('back')}</button>
-        <button class="btn" onclick="navigator.clipboard.writeText(location.href)">${t('copyLink')}</button>
-      </div>
-    </div>`;
+console.log('[post theme]', JSON.stringify(p.theme), '->', theme, '->', corner);
+
+$('#articleView').innerHTML = `
+  <div class="card article" style="--corner:${corner}">
+    <div class="meta small" style="color:var(--muted)">${meta}${tagBadges ? sep + tagBadges : ''}</div>
+    <h1 style="margin-top:8px">${title}</h1>
+    ${heroBlock}
+    ${bodyHtml}
+    ${pdfBlock}
+    <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" onclick="go('home')">&#11013; ${t('back')}</button>
+      <button class="btn" onclick="navigator.clipboard.writeText(location.href)">${t('copyLink')}</button>
+    </div>
+  </div>`;
   window.scrollTo({ top:0, behavior:'smooth' });
 }
 
