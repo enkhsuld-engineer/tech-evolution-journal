@@ -480,17 +480,76 @@ function wireBasicsControls(){
   });
 }
 
+const CATEGORY_COLORS = {
+  electric:  '#ea9d0c', // amber
+  control:   '#10b981', // emerald 
+  embedded:  '#1e40af', // dark blue
+  sim:       '#8a2be2', // violet
+  power:     '#ef4444', // red
+  docs:      '#64748b', // gray
+};
+
+const CATEGORY_RULES = [
+  { cat: 'electric', keys: [
+    'electric','circuit','dc-dc','buck','boost','buck-boost',
+    'inverter','rectifier','bridge','snubber','inductor','capacitor',
+    'mosfet','igbt','diode','降圧','昇圧','昇降圧','インバータ','整流','回路','電源','トポロジ'
+  ]},
+  { cat: 'control', keys: [
+    'control','pid','pi','pll','pwm','compensator','loop','bandwidth','droop',
+    'stability','bode','nyquist','gain',
+    '制御','補償','ゲイン','安定','位相','ボード','ドロープ','閉ループ','開ループ'
+  ]},
+  { cat: 'embedded', keys: [
+    'embedded','mcu','dsp','c2000','stm32','adc','dac','timer','pwm-out',
+    'firmware','driver','register','組込','組込み','マイコン','割り込み','レジスタ'
+  ]},
+  { cat: 'sim', keys: [
+    'psim','typhoon','hil','matlab','simulink','spice','ltspice',
+    'model','simulation','シミュレーション','モデル','解析','波形','仮想'
+  ]},
+  { cat: 'power', keys: [
+    'power','hv','high-voltage','800v','50kw','isolation','current-share',
+    'efficiency','thermal','heat','cooling','電力','高電圧','絶縁','効率','損失','熱','冷却','放熱'
+  ]},
+  { cat: 'docs', keys: [
+    'paper','mini-paper','pdf','site','post','doc','writeup','portfolio','github',
+    'ドキュメント','報告','成績書','仕様書','記事','投稿','サイト','運用'
+  ]},
+];
+
+const FALLBACK_COLORS = ['#3b82f6','#22c55e','#f59e0b','#ec4899','#14b8a6','#a855f7','#ef4444','#10b981'];
+
+function hashStr(s){
+  let h = 0; for(let i=0;i<s.length;i++) h = (h*31 + s.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
+function guessCategory(tag){
+  const t = String(tag||'').toLowerCase();
+  for(const r of CATEGORY_RULES){
+    if (r.keys.some(k => t.includes(k))) return r.cat;
+  }
+  return null;
+}
+function colorByCategory(tag){
+  const cat = guessCategory(tag);
+  if (cat && CATEGORY_COLORS[cat]) return CATEGORY_COLORS[cat];
+  return FALLBACK_COLORS[ hashStr(tag) % FALLBACK_COLORS.length ];
+}
+function tagBadge(tag){
+  const bg = colorByCategory(tag);
+  return `<span class="badge" style="background:${bg};color:#fff">${tag}</span>`;
+}
+
 
 function renderPosts(){
   const featuredGrid = $('#featuredGrid');
   const titleList    = $('#titleList');
 
-  // Filter by search + tag
   const filtered = POSTS
     .filter(p => matchesSearch(p, state.q))
     .filter(p => matchesTag(p, state.tag));
 
-  // Empty index states
   if (!POSTS.length) {
     if (featuredGrid) featuredGrid.innerHTML =
       `<div class="card" style="grid-column:1/-1;padding:22px">${t('loading')}</div>`;
@@ -507,14 +566,12 @@ function renderPosts(){
   const L = (typeof getLang==='function'? getLang() : 'en');
   const sep = '<span class="dot">&middot;</span>';
 
-  // Helper: choose per-language field with graceful fallback to EN
   const pick = (p, key) => {
     if (L==='ja' && p[`${key}_ja`]) return p[`${key}_ja`];
     if (L==='mn' && p[`${key}_mn`]) return p[`${key}_mn`];
     return p[key] || '';
   };
 
-  // Build featured (first 3) cards
   const featured = filtered.slice(0, 3);
   if (featuredGrid) {
     featuredGrid.innerHTML = featured.map(p => {
@@ -523,19 +580,34 @@ function renderPosts(){
       const metaBits = [p.date];
       if (typeof p.minutes === 'number') metaBits.push(`${p.minutes} ${t('minutes')}`);
       const meta = metaBits.join(sep);
-      const tagBadges = (p.tags||[]).map(tag => `<span class="badge">#${tag}</span>`).join(' ');
+      
+      const allTags     = p.tags || [];
+      const visibleTags = allTags.slice(0, 3);
+      const hiddenTags  = allTags.slice(3);
+      
+      let tagBadges = visibleTags.map(tag => tagBadge(tag)).join('');
+      if (hiddenTags.length > 0) {
+        tagBadges += `
+          <span class="badge more-tags">
+            +${hiddenTags.length}
+            <span class="extra-tags">
+              ${hiddenTags.map(tag => tagBadge(tag)).join('')}
+            </span>
+          </span>`;
+      }
+      
       const thumbHtml = p.hero ? `<img src="${p.hero}" alt="" loading="lazy">` : '';
       return `
         <article class="post" data-id="${p.id}" tabindex="0">
           <div class="thumb">${thumbHtml}</div>
-          <div class="meta small">${meta}${tagBadges ? sep + tagBadges : ''}</div>
+          <div class="meta small">${meta}${(tagBadges ? sep + tagBadges : '')}</div>
           <h3>${title}</h3>
           <p class="summary">${summary}</p>
         </article>`;
+
     }).join('');
   }
 
-  // Remaining posts go to the right-side "All Posts" list with pagination
   const rest = filtered.slice(3);
   const per = TITLES_PER_PAGE;
   const totalPages = Math.ceil(rest.length / per) || 1;
@@ -562,7 +634,6 @@ function renderPosts(){
         </div>`;
     }
 
-    // Wire clicks/keyboard for both featured cards and title list rows
     document.querySelectorAll('#featuredGrid .post').forEach(card => {
       const id = card.getAttribute('data-id');
       card.addEventListener('click', () => go('article', id));
@@ -594,7 +665,6 @@ async function renderArticle(id){
   const p = POSTS.find(x => x.id === id);
   if(!p) return;
 
-  // Pick content path per language (supports _ja and _mn)
   const contentUrl = pickByLang(p, 'content');
 
   let bodyHtml = '';
@@ -606,17 +676,28 @@ async function renderArticle(id){
     bodyHtml = `<p>${pickByLang(p, 'summary')}</p>`;
   }
 
-  // Title per language
   const title = pickByLang(p, 'title');
 
-  // Tags / meta
-  const tagBadges = (p.tags || []).map(t => `<span class="badge">#${t}</span>`).join(' ');
+const allTagsA     = p.tags || [];
+const visibleTagsA = allTagsA.slice(0, 3);
+const hiddenTagsA  = allTagsA.slice(3);
+
+let tagBadges = visibleTagsA.map(t => tagBadge(t)).join('');
+if (hiddenTagsA.length > 0) {
+  tagBadges += `
+    <span class="badge more-tags">
+      +${hiddenTagsA.length}
+      <span class="extra-tags">
+        ${hiddenTagsA.map(t => tagBadge(t)).join('')}
+      </span>
+    </span>`;
+}
+
   const metaBits  = [p.date];
   if (typeof p.minutes === 'number') metaBits.push(`${p.minutes} ${t('minutes')}`);
   const sep  = '<span class="dot">&middot;</span>';
   const meta = metaBits.join(sep);
 
-  // PDF per language: pdf_en / pdf_ja / pdf_mn (fallback to pdfUrl/pdf_en)
   const L = getLang();
   let pdfUrl = p.pdfUrl || p.pdf_en || '';
   if (L === 'ja' && p.pdf_ja) pdfUrl = p.pdf_ja;
@@ -648,7 +729,7 @@ async function renderArticle(id){
 }
 
 
-// render about taguud
+// render about
 function renderAbout() {
   const el = document.getElementById('aboutView') || document.querySelector('#aboutView');
   if (!el) return;
