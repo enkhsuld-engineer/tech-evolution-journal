@@ -13,7 +13,8 @@
     "type": "md",
     "content": "posts/buck_converter/buck_converter_en.md",
     "content_ja": "posts/buck_converter/buck_converter_ja.md",
-    "content_mn": "posts/buck_converter/buck_converter_mn.md"
+    "content_mn": "posts/buck_converter/buck_converter_mn.md",
+    "theme":"electric"
   },
   {
   "id": "p002",
@@ -29,7 +30,8 @@
   "type": "md",
   "content": "posts/boost_converter/boost_converter_en.md",
   "content_ja": "posts/boost_converter/boost_converter_ja.md",
-  "content_mn": "posts/boost_converter/boost_converter_mn.md"
+  "content_mn": "posts/boost_converter/boost_converter_mn.md",
+  "theme":"electric"
 },
   {
   "id": "p003",
@@ -45,7 +47,8 @@
   "type": "md",
   "content": "posts/buck_boost_converter/buck_boost_converter_en.md",
   "content_ja": "posts/buck_boost_converter/buck_boost_converter_ja.md",
-  "content_mn": "posts/buck_boost_converter/buck_boost_converter_mn.md"
+  "content_mn": "posts/buck_boost_converter/buck_boost_converter_mn.md",
+  "theme":"electric"
 }
 
 
