@@ -8,5 +8,6 @@ The focus is on how inductance, capacitance, and duty ratio affect output voltag
 ---
 
 **Simulation Software:** PSIM  
-**Keywords:** Buck-Boost converter, DC?DC conversion, ripple, transient response
+**Keywords:** Buck-Boost converter, DC-DC conversion, ripple, transient response
+
 
