@@ -616,14 +616,20 @@ function renderPosts(){
   const slice = rest.slice(start, start + per);
 
   if (titleList) {
-    titleList.innerHTML = slice.map(p => {
-      const title = pick(p, 'title');
-      return `
-        <div class="title-item" data-id="${p.id}" tabindex="0">
-          <div class="title-text">${title}</div>
-          <div class="title-date">${p.date}</div>
-        </div>`;
-    }).join('');
+  titleList.innerHTML = slice.map(p => {
+    const title = pick(p, 'title');
+    const visibleTags = (p.tags || []).slice(0, 3);
+    const tagBadges = visibleTags.map(tag => tagBadge(tag)).join(' ');
+    return `
+      <div class="title-item" data-id="${p.id}" tabindex="0">
+        <div class="title-text">${title}</div>
+        <div class="title-meta">
+          <span class="title-date">${p.date}</span>
+          <span class="title-tags">${tagBadges}</span>
+        </div>
+      </div>`;
+  }).join('');
+
 
     if (totalPages > 1) {
       titleList.innerHTML += `
