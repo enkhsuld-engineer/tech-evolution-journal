@@ -28,9 +28,9 @@
   "tags": ["boost","dc-dc","psim"],
   "hero": "images/thumbnail.png",
   "type": "md",
-  "content": "posts/boost_converter/boost_converter_en.md",
-  "content_ja": "posts/boost_converter/boost_converter_ja.md",
-  "content_mn": "posts/boost_converter/boost_converter_mn.md",
+  "content": "posts/boost_converter/basic_boost_en.md",
+  "content_ja": "posts/boost_converter/basic_boost_jp.md",
+  "content_mn": "posts/boost_converter/basic_boost_mn.md",
   "theme":"electric"
 },
   {
