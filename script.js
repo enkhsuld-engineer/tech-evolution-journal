@@ -10,6 +10,19 @@ const LANG_KEY = 'ae-lang';
 function getLang(){ return localStorage.getItem(LANG_KEY) || 'en'; }
 function setLang(v){ localStorage.setItem(LANG_KEY, v); }
 
+async function fetchMarkdownSafe(url){
+  if(!url) return null;
+  try{
+    const res = await fetch(url, { cache:'no-store' });
+    if(!res.ok) return null;
+    const text = await res.text();
+    // Detect if it's actually an HTML 404 page instead of markdown
+    if (/<!DOCTYPE|<html[\s>]/i.test(text)) return null;
+    return text;
+  }catch(_){ return null; }
+}
+
+
 const I18N = {
   en: {
     siteTitle: 'Tech Study Journal',
@@ -696,45 +709,42 @@ async function renderArticle(id){
   const p = POSTS.find(x => x.id === id);
   if(!p) return;
 
-  const contentUrl = pickByLang(p, 'content');
+  const L = getLang();
 
-  let bodyHtml = '';
-  if ((p.type || '').includes('md') && contentUrl){
-    const res = await fetch(contentUrl, { cache:'no-store' });
-    const md  = await res.text();
-    bodyHtml  = marked.parse(md).replaceAll('<a href="','<a target="_blank" rel="noopener noreferrer" href="');
-  } else {
-    bodyHtml = `<p>${pickByLang(p, 'summary')}</p>`;
-  }
-
+  // 1) pick localized title
   const title = pickByLang(p, 'title');
 
-const allTagsA     = p.tags || [];
-const visibleTagsA = allTagsA.slice(0, 3);
-const hiddenTagsA  = allTagsA.slice(3);
+  // 2) choose markdown file (ja/mn → en fallback)
+  const localizedPath =
+    (L === 'ja' ? p.content_ja :
+     L === 'mn' ? p.content_mn : null);
 
-let tagBadges = visibleTagsA.map(t => tagBadge(t)).join('');
-if (hiddenTagsA.length > 0) {
-  tagBadges += `
-    <span class="badge more-tags">
-      +${hiddenTagsA.length}
-      <span class="extra-tags">
-        ${hiddenTagsA.map(t => tagBadge(t)).join('')}
-      </span>
-    </span>`;
-}
+  const candidates = [
+    localizedPath && String(localizedPath).trim(),
+    p.content && String(p.content).trim()
+  ].filter(Boolean);
 
-  const metaBits  = [p.date];
-  if (typeof p.minutes === 'number') metaBits.push(`${p.minutes} ${t('minutes')}`);
-  const sep  = '<span class="dot">&middot;</span>';
-  const meta = metaBits.join(sep);
+  // 3) fetch markdown safely
+  let md = null;
+  for(const url of candidates){
+    md = await fetchMarkdownSafe(url);
+    if(md) break;
+  }
 
-  const L = getLang();
+  // 4) render markdown or fallback summary
+  let bodyHtml = '';
+  if ((p.type || '').includes('md') && md){
+    bodyHtml = marked.parse(md)
+      .replaceAll('<a href="','<a target="_blank" rel="noopener noreferrer" href="');
+  }else{
+    bodyHtml = `<p>${pickByLang(p, 'summary') || ''}</p>`;
+  }
+
+  // 5) pdf fallback
   let pdfUrl = p.pdfUrl || p.pdf_en || '';
   if (L === 'ja' && p.pdf_ja) pdfUrl = p.pdf_ja;
   if (L === 'mn' && p.pdf_mn) pdfUrl = p.pdf_mn;
 
-  const heroBlock =  '';
   const pdfBlock  = pdfUrl ? `
     <div class="card" style="padding:0;margin-top:18px;overflow:hidden">
       <div style="padding:16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
@@ -743,22 +753,17 @@ if (hiddenTagsA.length > 0) {
       </div>
       <div class="pdfwrap"><object data="${pdfUrl}" type="application/pdf"></object></div>
     </div>` : '';
-  
-const theme = (p.theme || '').toString().trim().toLowerCase();
-const THEME_COLORS = {
-  electric:  '#ea9d0c', // amber
-  control:   '#1e40af', // dark blue
-  embedded:  '#10b981', // emerald 
-  sim:       '#8a2be2', // violet
-  power:     '#ef4444', // red
-  docs:      '#64748b', // gray
-};
-const corner = THEME_COLORS[theme] || '#EA9D0C'; // fallback
 
-console.log('[post theme]', JSON.stringify(p.theme), '->', theme, '->', corner);
+  // 6) build meta, hero, and final view
+  const meta = `${p.date||''}`;
+  const tags = p.tags?.map(x=>`<span class="tag tag-${x}">${x}</span>`).join(' ')||'';
+  const sep = meta && tags ? ' ・ ' : '';
+  const tagBadges = tags;
+  const theme = p.theme || 'electric';
+  const heroBlock = p.hero ? `<img src="${p.hero}" alt="" style="width:100%;height:400px;border-radius:12px;border:1px solid var(--border);margin:8px 0 14px">` : '';
 
-$('#articleView').innerHTML = `
-  <div class="card article" style="--corner:${corner}">
+  $('#articleView').innerHTML = `
+  <div class="card article" data-theme="${theme}">
     <div class="meta small" style="color:var(--muted)">${meta}${tagBadges ? sep + tagBadges : ''}</div>
     <h1 style="margin-top:8px">${title}</h1>
     ${heroBlock}
@@ -769,8 +774,8 @@ $('#articleView').innerHTML = `
       <button class="btn" onclick="navigator.clipboard.writeText(location.href)">${t('copyLink')}</button>
     </div>
   </div>`;
-  window.scrollTo({ top:0, behavior:'smooth' });
 }
+
 
 
 // render about
