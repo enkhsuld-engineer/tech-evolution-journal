@@ -661,4 +661,10 @@ input, textarea, [contenteditable], input * { caret-color: auto !important; }
     border-width: 0 0 120px 200px;               
     opacity: .85;
   }
+}/* Never show a hero/thumbnail inside the article page */
+#articleView .thumb,
+#articleView .hero,
+#articleView .article > img:first-child,
+#articleView .article > p:first-child > img {
+  display: none !important;
 }
