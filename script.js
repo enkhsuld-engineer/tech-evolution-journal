@@ -855,7 +855,7 @@ function renderAbout() {
 
         <p style="margin-top:20px;color:var(--muted)">${updated}</p>
         
-        <a href="legal.html" target="_blank">Хуулийн хэлтэс тайвшир</a>
+        <a href="legal.html" target="_blank">Компаний нууц миний ноорогт ордоггүй.</a>
         <div style="margin-top:16px">
           <button class="btn" onclick="go('home')">⬅ ${typeof t==='function' ? t('back') : 'Back'}</button>
         </div>
