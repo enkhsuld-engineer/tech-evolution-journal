@@ -694,4 +694,6 @@ input, textarea, [contenteditable], input * { caret-color: auto !important; }
 }
 
 nav { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+#langToggle { transition: none; }
+
 
