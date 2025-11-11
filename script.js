@@ -147,25 +147,54 @@ function applyStaticTexts(){
   document.title = t('siteTitle');
 }
 
-function wireLangToggle(){
-  const btn = document.getElementById('langToggle');
-  if(!btn) return;
+function wireLangToggle() {
+  const toggle = document.getElementById('langToggle');
+  const menu   = document.getElementById('langMenu');
+  if (!toggle || !menu) return;
 
-  const cycle = ['en', 'ja', 'mn'];
-  const labels = { en: 'JP', ja: 'MN', mn: 'EN' };
-
-  const refresh = () => { btn.textContent = labels[getLang()] || 'JP'; };
-  refresh();
-
-  btn.onclick = () => {
-    const current = getLang();
-    const next = cycle[(cycle.indexOf(current) + 1) % cycle.length];
-    setLang(next);
-    refresh();
-    applyStaticTexts();
-    renderNow();
+  // ASCII-only labels to avoid encoding issues
+  const LABELS = {
+    en: 'English',
+    ja: '\u65E5\u672C\u8A9E',              // 日本語
+    mn: '\u041C\u043E\u043D\u0433\u043E\u043B' // Монгол
   };
+  const SHORT = { en: 'EN', ja: 'JP', mn: 'MN' };
+
+  function refreshToggle(){
+    const cur = getLang();
+    toggle.textContent = SHORT[cur] || 'EN';
+    toggle.setAttribute('aria-label', `Language: ${LABELS[cur] || 'English'}`);
+  }
+
+  // build dropdown
+  menu.innerHTML = ['en','ja','mn']
+    .map(code => `<button data-lang="${code}">${LABELS[code]}</button>`)
+    .join('');
+
+  // open/close
+  toggle.onclick = (e) => {
+    e.stopPropagation();
+    menu.classList.toggle('hidden');
+  };
+
+  // select language
+  menu.querySelectorAll('button[data-lang]').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      setLang(btn.dataset.lang);
+      applyStaticTexts();
+      renderNow();
+      refreshToggle();
+      menu.classList.add('hidden');
+    };
+  });
+
+  // outside click closes
+  document.addEventListener('click', () => menu.classList.add('hidden'));
+
+  refreshToggle();
 }
+
 
 
 
