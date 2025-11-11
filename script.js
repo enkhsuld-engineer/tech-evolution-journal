@@ -816,6 +816,8 @@ function renderAbout() {
 
 
         <p style="margin-top:20px;color:var(--muted)">${updated}</p>
+        
+        <a href="legal.html" target="_blank">これは趣味です、仕事じゃないです</a>
         <div style="margin-top:16px">
           <button class="btn" onclick="go('home')">⬅ ${typeof t==='function' ? t('back') : 'Back'}</button>
         </div>
@@ -852,6 +854,8 @@ function renderAbout() {
         </ul>
 
         <p style="margin-top:20px;color:var(--muted)">${updated}</p>
+        
+        <a href="legal.html" target="_blank">Хуулийн хэлтэс тайвшир</a>
         <div style="margin-top:16px">
           <button class="btn" onclick="go('home')">⬅ ${typeof t==='function' ? t('back') : 'Back'}</button>
         </div>
@@ -884,6 +888,7 @@ function renderAbout() {
     </ul>
 
       <p style="margin-top:20px;color:var(--muted)">${updated}</p>
+      <a href="legal.html" target="_blank">No NDAs Were Harmed</a>
       <div style="margin-top:16px">
         <button class="btn" onclick="go('home')">⬅ ${typeof t==='function' ? t('back') : 'Back'}</button>
       </div>
