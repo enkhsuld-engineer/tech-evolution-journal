@@ -668,3 +668,30 @@ input, textarea, [contenteditable], input * { caret-color: auto !important; }
 #articleView .article > p:first-child > img {
   display: none !important;
 }
+
+.lang-menu { position: relative; display: inline-block; }
+.lang-options {
+  position: absolute; right: 0; top: 120%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  min-width: 120px;
+  display: flex; flex-direction: column;
+  z-index: 30;
+  overflow: hidden;
+  font-family: Inter, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo,
+               "Noto Sans", Segoe UI, Roboto, system-ui, Arial, sans-serif;
+}
+.lang-options.hidden { display: none; }
+.lang-options button {
+  padding: 10px 12px; border: 0; background: none;
+  color: var(--text); text-align: left; font-weight: 700; cursor: pointer;
+}
+.lang-options button:hover {
+  background: color-mix(in srgb, var(--prime) 25%, var(--panel));
+  color: #fff;
+}
+
+nav { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+
