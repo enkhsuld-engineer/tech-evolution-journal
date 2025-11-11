@@ -756,11 +756,10 @@ async function renderArticle(id){
 
   // 6) build meta, hero, and final view
   const meta = `${p.date||''}`;
-  const tags = p.tags?.map(x=>`<span class="tag tag-${x}">${x}</span>`).join(' ')||'';
-  const sep = meta && tags ? ' ・ ' : '';
-  const tagBadges = tags;
+  const tagBadges = (p.tags || []).map(tag => tagBadge(tag)).join(' ');
+  const sep = meta && tagBadges ? ' ・ ' : '';
   const theme = p.theme || 'electric';
-  const heroBlock = p.hero ? `<img src="${p.hero}" alt="" style="width:100%;height:400px;border-radius:12px;border:1px solid var(--border);margin:8px 0 14px">` : '';
+  const heroBlock = '';
 
   $('#articleView').innerHTML = `
   <div class="card article" data-theme="${theme}">
