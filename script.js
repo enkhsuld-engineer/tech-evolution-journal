@@ -553,7 +553,7 @@ const CATEGORY_COLORS = {
   embedded:  '#10b981', // emerald 
   sim:       '#8a2be2', // violet
   power:     '#ef4444', // red
-  docs:      '#64748b', // gray
+  theory:      '#64748b', // gray
 };
 
 const CATEGORY_RULES = [
@@ -579,8 +579,8 @@ const CATEGORY_RULES = [
     'power','hv','high-voltage','800v','50kw','isolation','current-share',
     'efficiency','thermal','heat','cooling','電力','高電圧','絶縁','効率','損失','熱','冷却','放熱'
   ]},
-  { cat: 'docs', keys: [
-    'paper','mini-paper','pdf','site','post','doc','writeup','portfolio','github',
+  { cat: 'theory', keys: [
+    'paper','math','pdf','theory','post','doc','writeup','portfolio','github',
     'ドキュメント','報告','成績書','仕様書','記事','投稿','サイト','運用'
   ]},
 ];
