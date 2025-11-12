@@ -697,3 +697,10 @@ nav { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
 #langToggle { transition: none; }
 
 
+.article[data-theme="electric"] { --corner:#ea9d0c; }  /* amber */
+.article[data-theme="control"]  { --corner:#1e40af; }  /* dark blue */
+.article[data-theme="embedded"] { --corner:#10b981; }  /* emerald */
+.article[data-theme="sim"]      { --corner:#8a2be2; }  /* violet */
+.article[data-theme="power"]    { --corner:#ef4444; }  /* red */
+.article[data-theme="theory"]     { --corner:#848484; }  /* gray */
+
