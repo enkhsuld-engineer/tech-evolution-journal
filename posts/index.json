@@ -49,6 +49,22 @@
   "content_ja": "posts/buck_boost_converter/buck_boost_converter_ja.md",
   "content_mn": "posts/buck_boost_converter/buck_boost_converter_mn.md",
   "theme":"electric"
+},
+{
+  "id": "p004",
+  "title": "Laplace Transform Basics for Control",
+  "title_ja": "制御のためのラプラス変換入門",
+  "title_mn": "Лапласын хувиргалтын үндэс",
+  "summary": "What Laplace transform is, why control engineers use it, and how to go from differential equations to transfer functions. Includes worked examples and partial fractions.",
+  "date": "2025-11-12",
+  "minutes": 7,
+  "tags": ["theory", "control", "math", "laplace"],
+  "type": "md",
+  "content": "posts/laplace/laplace.md",
+  "content_ja": "posts/laplace/laplace.md",
+  "content_mn": "posts/laplace/laplace.md",
+  "hero": "images/thumbnailtheory.jpg",
+  "theme": "theory"
 }
 
 
