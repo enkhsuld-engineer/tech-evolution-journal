@@ -27,7 +27,14 @@ html,body{height:100%; overflow-x:hidden}
 *{ box-sizing:border-box }
 body{
   margin:0;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+  font-family:
+    Inter, 
+    "Noto Sans JP",
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    system-ui,
+    sans-serif;
   background:
     radial-gradient(1200px 1200px at 120% -20%, rgba(62,166,255,.14), transparent 60%),
     radial-gradient(900px 900px at -10% -10%, rgba(110,231,183,.12), transparent 60%),
@@ -703,4 +710,11 @@ nav { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
 .article[data-theme="sim"]      { --corner:#8a2be2; }  /* violet */
 .article[data-theme="power"]    { --corner:#ef4444; }  /* red */
 .article[data-theme="theory"]     { --corner:#848484; }  /* gray */
+
+html[lang="ja"] * {
+  font-family: "Noto Sans JP", Inter, sans-serif !important;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
 
