@@ -46,7 +46,7 @@
   "hero": "images/thumbnail.png",
   "type": "md",
   "content": "posts/buck_boost_converter/buck_boost_converter_en.md",
-  "content_ja": "posts/buck_boost_converter/buck_boost_converter_ja.md",
+  "content_ja": "posts/buck_boost_converter/buck_boost_converter_jp.md",
   "content_mn": "posts/buck_boost_converter/buck_boost_converter_mn.md",
   "theme":"electric"
 },
