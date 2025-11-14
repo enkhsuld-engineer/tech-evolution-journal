@@ -3,7 +3,7 @@
 主な焦点は、インダクタンス・キャパシタンス・デューティ比が出力電圧、リプル、過渡応答にどのような影響を与えるかである。
 
 📄 **PDF ダウンロード**  
-[日本語版を開く](/tech-evolution-journal/documents/buck_boost_converter/buck_boost_converter_jp.pdf)
+[日本語版を開く](/tech-evolution-journal/documents/buck_boost_converter/basic_buck_boost_jp.pdf)
 
 ---
 
