@@ -55,15 +55,17 @@
   "title": "Laplace Transform Basics for Control",
   "title_ja": "制御のためのラプラス変換入門",
   "title_mn": "Лапласын хувиргалтын үндэс",
-  "summary": "What Laplace transform is, why control engineers use it, and how to go from differential equations to transfer functions. Includes worked examples and partial fractions.",
+  "summary": "Mathematical foundation of the Laplace Transform and its role in converting time-domain differential equations into s-domain algebraic expressions for system analysis.",
+  "summary_ja": "ラプラス変換の数学的基礎と、時間領域の微分方程式を s 領域の代数式へ変換してシステム解析を可能にする仕組みを解説。",
+  "summary_mn": "Лапласын хувиргалтын математик үндэс болон цагийн домэйны дифференциал тэгшитгэлийг s-домэйнд алгебрын хэлбэрт хувирган системийг шинжлэх зарчмыг тайлбарлав.",
   "date": "2025-11-12",
   "tags": ["theory", "control", "math", "laplace"],
   "type": "md",
-  "content": "posts/laplace/laplace.md",
-  "content_ja": "posts/laplace/laplace.md",
-  "content_mn": "posts/laplace/laplace.md",
   "hero": "images/thumbnailtheory.png",
-  "theme": "theory"
+  "theme": "theory",
+  "content": "posts/laplace/laplace_en.md",
+  "content_ja": "posts/laplace/laplace_jp.md",
+  "content_mn": "posts/laplace/laplace_mn.md"
 }
 
 
