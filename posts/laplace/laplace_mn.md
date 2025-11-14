@@ -4,7 +4,7 @@
 Үндсэн дохио, хувиргалтын шинж чанар, дифференциал ба интегралын дүрмүүд зэрэг гол ойлголтуудыг багтаасан.
 
 📄 **PDF татах**  
-[Монгол хэл дээрх хувилбарыг үзэх](/tech-evolution-journal/documents/laplace/Laplace_Transform_and_Its_Role_in_Control_System_Analysis.pdf)
+[Монгол хэл дээрх хувилбарыг үзэх](/tech-evolution-journal/documents/laplace/Laplace_Transform_and_Its_Role_in_Control_System_Analysis_mn.pdf)
 
 ---
 
