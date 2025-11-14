@@ -4,11 +4,12 @@ The focus is on how inductance, capacitance, and duty ratio affect output voltag
 
 
 📄 **Download full paper (PDF)**  
-[Click here to view the English version](/tech-evolution-journal/documents/boost_converter/Boost_converter_en.pdf)
+[Click here to view the English version](/tech-evolution-journal/documents/boost_converter/basic_boost_en.pdf)
 
 ---
 **Simulation Software:** PSIM  
 **Keywords:** Buck converter, DC-DC conversion, ripple, transient response
+
 
 
 
