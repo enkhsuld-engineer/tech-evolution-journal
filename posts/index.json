@@ -63,7 +63,7 @@
   "type": "md",
   "hero": "images/thumbnailtheory.png",
   "theme": "theory",
-  "content": "posts/laplace/laplace_en.md",
+  "content": "posts/laplace/laplace.md",
   "content_ja": "posts/laplace/laplace_jp.md",
   "content_mn": "posts/laplace/laplace_mn.md"
 }
