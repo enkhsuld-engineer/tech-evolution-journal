@@ -66,8 +66,25 @@
   "content": "posts/laplace/laplace.md",
   "content_ja": "posts/laplace/laplace_jp.md",
   "content_mn": "posts/laplace/laplace_mn.md"
-}
+},
+{
+  "id": "p005",
+  "title": "Transfer Function Basics for Control",
+  "title_ja": "制御のための伝達関数入門",
+  "title_mn": "Transfer Function-ийн үндэс",
+  "summary": "Mathematical foundation of the transfer function and how it represents the input–output relationship of linear time-invariant systems in the s-domain for stability and dynamic response analysis.",
+  "summary_ja": "伝達関数の数学的基礎と、線形時不変システムの入出力関係を s 領域で表現し、安定性や動特性を解析する枠組みを解説。",
+  "summary_mn": "Transfer Function–ийн математик үндэс болон шугаман хугацаанаас хамаарахгүй системийн оролт–гаралтын хамаарлыг s-домэйнд илэрхийлж, тогтвортой байдал ба динамик хариуг шинжлэх зарчмыг тайлбарлав.",
+  "date": "2025-11-20",
+  "tags": ["theory", "control", "math", "transfer-function"],
+  "type": "md",
+  "hero": "images/thumbnailtheory.png",
+  "theme": "theory",
+  "content": "posts/transfer_function/transfer_function_en.md",
+  "content_ja": "posts/transfer_function/transfer_function_jp.md",
+  "content_mn": "posts/transfer_function/transfer_function_mn.md"
 
+}
 
 ]
 
