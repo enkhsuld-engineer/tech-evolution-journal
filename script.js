@@ -1180,12 +1180,14 @@ async function renderNow(){
   wireSearch();
   setActiveNav();
 
-  if(state.route==='home'){
-    renderPosts();
-    wireAllViewToggle();
-    show('homeView');
-    renderBasicsMini();
-  }
+ if(state.route==='home'){
+  applyStaticTexts();      // ADD: always sync labels
+  renderPosts();
+  wireAllViewToggle();     // wires + refresh() sets active state
+  show('homeView');
+  renderBasicsMini();
+}
+
   else if(state.route==='article' && state.articleId){
     await renderArticle(state.articleId);
     show('articleView');
@@ -1234,13 +1236,10 @@ applyTheme(getTheme());
   if (fg) fg.innerHTML = '<div class="card" style="grid-column:1/-1;padding:22px">Loading posts...</div>';
   await loadIndex();
   parseHash();
-  await renderNow();
-
-  // NEW: apply translations and wire the toggle
-  applyStaticTexts();
-  wireLangToggle();
-  renderBasicsMini();
-  wireBasicsControls();
+ await renderNow();
+wireLangToggle();
+renderBasicsMini();
+wireBasicsControls();
   document.getElementById('homeLink').addEventListener('click', e => {
     e.preventDefault();
     go('home');
