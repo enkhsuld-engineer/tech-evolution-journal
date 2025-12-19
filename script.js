@@ -133,12 +133,13 @@ function applyStaticTexts(){
     if(href==='#/home')  a.textContent = t('navHome');
     if(href==='#/about') a.textContent = t('navAbout');
     if(href==='#/tags')  a.textContent = t('navTags');
-    const vList = document.getElementById('allViewList');
+    
+
+  });
+  const vList = document.getElementById('allViewList');
 const vGrid = document.getElementById('allViewGrid');
 if(vList) vList.textContent = t('allViewList');
 if(vGrid) vGrid.textContent = t('allViewGrid');
-
-  });
 
   // Headings & hero
   const heroTitle = document.getElementById('heroTitle');
@@ -775,7 +776,7 @@ if (titleList) {
   if (prev) prev.onclick = () => { titlePage--; renderPosts(); };
   if (next) next.onclick = () => { titlePage++; renderPosts(); };
 }
-
+}
 
 
 // render articluud ihsej bolno
@@ -1178,18 +1179,30 @@ async function renderNow(){
   buildTagBar();
   wireSearch();
   setActiveNav();
-if(state.route==='home'){
-  renderPosts();
-  wireAllViewToggle();
-  show('homeView');
-  renderBasicsMini();
-}
 
+  if(state.route==='home'){
+    renderPosts();
+    wireAllViewToggle();
+    show('homeView');
+    renderBasicsMini();
   }
-  else if(state.route==='article' && state.articleId){ await renderArticle(state.articleId); show('articleView'); }
-  else if(state.route==='about'){ renderAbout(); show('aboutView'); }
-  else if(state.route==='tags'){ renderTags(); show('tagsView'); }
-  else { renderPosts(); show('homeView'); renderBasicsMini(); }
+  else if(state.route==='article' && state.articleId){
+    await renderArticle(state.articleId);
+    show('articleView');
+  }
+  else if(state.route==='about'){
+    renderAbout();
+    show('aboutView');
+  }
+  else if(state.route==='tags'){
+    renderTags();
+    show('tagsView');
+  }
+  else{
+    renderPosts();
+    show('homeView');
+    renderBasicsMini();
+  }
 }
 
 
