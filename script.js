@@ -690,6 +690,17 @@ function renderPosts(){
 
     }).join('');
   }
+    // ===== RE-BIND clicks for Recent Projects (featured) =====
+  if (featuredGrid) {
+    featuredGrid.querySelectorAll('[data-id]').forEach(card => {
+      const id = card.getAttribute('data-id');
+      card.addEventListener('click', () => go('article', id));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter') go('article', id);
+      });
+    });
+  }
+
 
  const rest = filtered.slice(3);
 
