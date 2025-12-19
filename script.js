@@ -553,7 +553,7 @@ const CATEGORY_COLORS = {
   embedded:  '#2F4F43', // dark blue
   sim:       '#3B2F3F', // violet
   power:     '#ef4444', // red
-  docs:      '#2B2E34', // gray
+  theory:      '#2B2E34', // gray
 };
 
 const CATEGORY_RULES = [
@@ -584,8 +584,7 @@ const CATEGORY_RULES = [
     'ドキュメント','報告','成績書','仕様書','記事','投稿','サイト','運用'
   ]},
 ];
-
-const FALLBACK_COLORS = ['#3b82f6','#22c55e','#f59e0b','#ec4899','#14b8a6','#a855f7','#ef4444','#10b981'];
+const FALLBACK_COLORS = ['#3A5E52','#2F4258','#3A3D44','#3A6F6F','#14b8a6','#a855f7','#ef4444','#10b981'];
 
 function hashStr(s){
   let h = 0; for(let i=0;i<s.length;i++) h = (h*31 + s.charCodeAt(i)) | 0;
