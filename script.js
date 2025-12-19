@@ -548,12 +548,12 @@ function wireBasicsControls(){
 }
 
 const CATEGORY_COLORS = {
-  electric:  '#ea9d0c', // amber
-  control:   '#1e40af', // dark blue
-  embedded:  '#10b981', // emerald 
-  sim:       '#8a2be2', // violet
+  electric:  '#25364A', // amber
+  control:   '#2E5B5B', // emerald 
+  embedded:  '#2F4F43', // dark blue
+  sim:       '#3B2F3F', // violet
   power:     '#ef4444', // red
-  theory:      '#64748b', // gray
+  docs:      '#2B2E34', // gray
 };
 
 const CATEGORY_RULES = [
