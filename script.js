@@ -1,5 +1,10 @@
 let POSTS = [];
 let state = { q:'', tag:null, route:'home', articleId:null };
+// ===== All Posts layout (list/grid) =====
+const ALL_VIEW_KEY = 'ae-all-view';
+function getAllView(){ return localStorage.getItem(ALL_VIEW_KEY) || 'list'; }
+function setAllView(v){ localStorage.setItem(ALL_VIEW_KEY, v); }
+
 const $  = s => document.querySelector(s);
 const $all = s => Array.from(document.querySelectorAll(s));
 const uniq = a => Array.from(new Set(a));
@@ -26,6 +31,8 @@ async function fetchMarkdownSafe(url){
 const I18N = {
   en: {
     siteTitle: 'Tech Study Journal',
+    allViewList: 'List',
+    allViewGrid: 'Grid',
     navHome: 'Home',
     navAbout: 'About',
     navTags: 'Tags',
@@ -55,6 +62,8 @@ const I18N = {
   },
   ja: {
     siteTitle: 'Tech Study Journal',
+    allViewList: 'リスト',
+    allViewGrid: 'グリッド',
     navHome: 'ホーム',
     navAbout: 'About',
     navTags: 'Tags',
@@ -84,6 +93,8 @@ const I18N = {
   },
     mn: {
     siteTitle: "Техникийн Судалгааны Тэмдэглэл",
+    allViewList: 'Жагсаалт',
+    allViewGrid: 'Grid',
     navHome: "Нүүр",
     navAbout: "Тухай",
     navTags: "Tags",
@@ -122,6 +133,11 @@ function applyStaticTexts(){
     if(href==='#/home')  a.textContent = t('navHome');
     if(href==='#/about') a.textContent = t('navAbout');
     if(href==='#/tags')  a.textContent = t('navTags');
+    const vList = document.getElementById('allViewList');
+const vGrid = document.getElementById('allViewGrid');
+if(vList) vList.textContent = t('allViewList');
+if(vGrid) vGrid.textContent = t('allViewGrid');
+
   });
 
   // Headings & hero
@@ -674,55 +690,92 @@ function renderPosts(){
     }).join('');
   }
 
-  const rest = filtered.slice(3);
-  const per = TITLES_PER_PAGE;
-  const totalPages = Math.ceil(rest.length / per) || 1;
-  if (titlePage > totalPages) titlePage = totalPages;
-  const start = (titlePage - 1) * per;
-  const slice = rest.slice(start, start + per);
+ const rest = filtered.slice(3);
 
-  if (titleList) {
-  titleList.innerHTML = slice.map(p => {
-    const title = pick(p, 'title');
-    const visibleTags = (p.tags || []).slice(0, 3);
-    const tagBadges = visibleTags.map(tag => tagBadge(tag)).join(' ');
-    return `
-      <div class="title-item" data-id="${p.id}" tabindex="0">
-        <div class="title-text">${title}</div>
-        <div class="title-meta">
-          <span class="title-date">${p.date}</span>
-          <span class="title-tags">${tagBadges}</span>
-        </div>
-      </div>`;
-  }).join('');
+const mode = getAllView();              // 'list' or 'grid'
+const perList = TITLES_PER_PAGE;
+const perGrid = 9;
+const per = (mode === 'grid') ? perGrid : perList;
 
+const totalPages = Math.ceil(rest.length / per) || 1;
+if (titlePage > totalPages) titlePage = totalPages;
+const start = (titlePage - 1) * per;
+const slice = rest.slice(start, start + per);
 
-    if (totalPages > 1) {
-      titleList.innerHTML += `
-        <div style="display:flex;justify-content:center;gap:10px;padding:10px">
-          <button class="btn" id="prevPage" ${titlePage===1 ? 'disabled' : ''}>${t('prev')}</button>
-          <div class="small" style="align-self:center">${t('page')} ${titlePage} / ${totalPages}</div>
-          <button class="btn" id="nextPage" ${titlePage===totalPages ? 'disabled' : ''}>${t('next')}</button>
+if (titleList) {
+  titleList.classList.toggle('gridmode', mode === 'grid');
+
+  if (mode === 'grid') {
+    titleList.innerHTML = slice.map(p => {
+      const title   = pick(p, 'title');
+      const summary = pick(p, 'summary');
+
+      const metaBits = [p.date];
+      if (typeof p.minutes === 'number') metaBits.push(`${p.minutes} ${t('minutes')}`);
+      const meta = metaBits.join(' ・ ');
+
+      const allTags     = p.tags || [];
+      const visibleTags = allTags.slice(0, 3);
+      const hiddenTags  = allTags.slice(3);
+
+      let tagBadges = visibleTags.map(tag => tagBadge(tag)).join('');
+      if (hiddenTags.length > 0) {
+        tagBadges += `
+          <span class="badge more-tags">
+            +${hiddenTags.length}
+            <span class="extra-tags">
+              ${hiddenTags.map(tag => tagBadge(tag)).join('')}
+            </span>
+          </span>`;
+      }
+
+      const thumbHtml = p.hero ? `<img src="${p.hero}" alt="" loading="lazy">` : '';
+      return `
+        <article class="allcard" data-id="${p.id}" tabindex="0">
+          <div class="thumb">${thumbHtml}</div>
+          <div class="meta small">${meta}${(tagBadges ? ' ・ ' + tagBadges : '')}</div>
+          <h3>${title}</h3>
+          <p class="summary">${summary}</p>
+        </article>`;
+    }).join('');
+  } else {
+    titleList.innerHTML = slice.map(p => {
+      const title = pick(p, 'title');
+      const visibleTags = (p.tags || []).slice(0, 3);
+      const tagBadges = visibleTags.map(tag => tagBadge(tag)).join(' ');
+      return `
+        <div class="title-item" data-id="${p.id}" tabindex="0">
+          <div class="title-text">${title}</div>
+          <div class="title-meta">
+            <span class="title-date">${p.date}</span>
+            <span class="title-tags">${tagBadges}</span>
+          </div>
         </div>`;
-    }
-
-    document.querySelectorAll('#featuredGrid .post').forEach(card => {
-      const id = card.getAttribute('data-id');
-      card.addEventListener('click', () => go('article', id));
-      card.addEventListener('keydown', e => { if (e.key === 'Enter') go('article', id); });
-    });
-    document.querySelectorAll('#titleList .title-item').forEach(row => {
-      const id = row.getAttribute('data-id');
-      row.addEventListener('click', () => go('article', id));
-      row.addEventListener('keydown', e => { if (e.key === 'Enter') go('article', id); });
-    });
-
-    const prev = document.getElementById('prevPage');
-    const next = document.getElementById('nextPage');
-    if (prev) prev.onclick = () => { titlePage--; renderPosts(); };
-    if (next) next.onclick = () => { titlePage++; renderPosts(); };
+    }).join('');
   }
+
+  if (totalPages > 1) {
+    titleList.innerHTML += `
+      <div style="grid-column:1/-1;display:flex;justify-content:center;gap:10px;padding:10px">
+        <button class="btn" id="prevPage" ${titlePage===1 ? 'disabled' : ''}>${t('prev')}</button>
+        <div class="small" style="align-self:center">${t('page')} ${titlePage} / ${totalPages}</div>
+        <button class="btn" id="nextPage" ${titlePage===totalPages ? 'disabled' : ''}>${t('next')}</button>
+      </div>`;
+  }
+
+  // Re-bind clicks for both modes
+  titleList.querySelectorAll('[data-id]').forEach(el => {
+    const id = el.getAttribute('data-id');
+    el.addEventListener('click', () => go('article', id));
+    el.addEventListener('keydown', e => { if (e.key === 'Enter') go('article', id); });
+  });
+
+  const prev = document.getElementById('prevPage');
+  const next = document.getElementById('nextPage');
+  if (prev) prev.onclick = () => { titlePage--; renderPosts(); };
+  if (next) next.onclick = () => { titlePage++; renderPosts(); };
 }
+
 
 
 // render articluud ihsej bolno
@@ -1093,14 +1146,45 @@ function go(route, payload){
 function filterByTag(t){ state.tag = t; updateHash(); renderNow(); }
 function clearTag(){ state.tag = null; updateHash(); renderNow(); }
 
+function wireAllViewToggle(){
+  const bList = document.getElementById('allViewList');
+  const bGrid = document.getElementById('allViewGrid');
+  if(!bList || !bGrid) return;
+
+  function refresh(){
+    const mode = getAllView();
+    bList.classList.toggle('active', mode === 'list');
+    bGrid.classList.toggle('active', mode === 'grid');
+  }
+
+  bList.onclick = ()=>{
+    setAllView('list');
+    titlePage = 1;
+    refresh();
+    renderPosts();
+  };
+  bGrid.onclick = ()=>{
+    setAllView('grid');
+    titlePage = 1;
+    refresh();
+    renderPosts();
+  };
+
+  refresh();
+}
+
+
 async function renderNow(){
   buildTagBar();
   wireSearch();
   setActiveNav();
-  if(state.route==='home'){
-    renderPosts();
-    show('homeView');
-    renderBasicsMini();     
+if(state.route==='home'){
+  renderPosts();
+  wireAllViewToggle();
+  show('homeView');
+  renderBasicsMini();
+}
+
   }
   else if(state.route==='article' && state.articleId){ await renderArticle(state.articleId); show('articleView'); }
   else if(state.route==='about'){ renderAbout(); show('aboutView'); }
