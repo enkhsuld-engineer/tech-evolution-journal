@@ -2,7 +2,7 @@
 Classical first-order болон second-order control theory-г бодит converter-ийн behavior-той холбон, inductance, PI gain, damping шинж чанарууд нь transient response, stability, болон steady-state performance-ийг хэрхэн тодорхойлдгийг харуулна.
 
 📄 **PDF татах**  
-[Монгол хэл дээрх хувилбарыг үзэх](/tech-evolution-journal/documents/boost_converter/basic_boost_mn.pdf)
+[Монгол хэл дээрх хувилбарыг үзэх](/tech-evolution-journal/documents/PIControl/ISRPIControllermn.pdf)
 
 ---
 
