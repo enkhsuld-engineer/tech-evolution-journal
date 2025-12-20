@@ -6,5 +6,5 @@ Classical first-order болон second-order control theory-г бодит conve
 
 ---
 
-**Topic:** Power Electronics, Control Engineering
+**Topic:** Power Electronics, Control Engineering  
 **Keywords:** Buck Converter, Current PI Control, Impulse Response, Step Response, Second-Order System
