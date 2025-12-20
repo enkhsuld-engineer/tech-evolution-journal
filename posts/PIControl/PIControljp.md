@@ -5,5 +5,5 @@
 [日本語版を開く](/tech-evolution-journal/documents/PIControl/ISRPIControllerjp.pdf)
 
 ---
-**分野:** パワーエレクトロニクス，制御工学
+**分野:** パワーエレクトロニクス，制御工学  
 **キーワード:** バックコンバータ，電流 PI 制御，インパルス応答，ステップ応答，二次系
