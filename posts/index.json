@@ -89,10 +89,10 @@
   "id": "p006",
   "title": "Impulse and Step Responses of a PI-Controlled Buck Converter",
   "title_ja": "電流 PI 制御バックコンバータのインパルス応答とステップ応答",
-  "title_mn": "Current PI controller-той Impulse ба Step Response ийн тухай"
+  "title_mn": "Current PI controller-той Impulse ба Step Response ийн тухай",
   "summary": "Mathematical foundation of impulse and step responses and how they characterize the transient, stability, and steady-state behavior of a current PI–controlled buck converter.",
   "summary_ja": "電流 PI 制御下にあるバックコンバータのインパルス応答およびステップ応答の数学的基礎と、それらが過渡特性・安定性・定常特性をどのように特徴付けるかを解説。",
-  "summary_mn": "Current PI controller-той buck converter-ийн impulse response болон step response-ийн математик үндэс, мөн эдгээр нь transient, stability, steady-state behavior-ийг хэрхэн тодорхойлдгийг тайлбарлав."
+  "summary_mn": "Current PI controller-той buck converter-ийн impulse response болон step response-ийн математик үндэс, мөн эдгээр нь transient, stability, steady-state behavior-ийг хэрхэн тодорхойлдгийг тайлбарлав.",
   "date": "2025-12-20",
   "tags": ["theory", "control", "math"],
   "type": "md",
