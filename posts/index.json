@@ -102,6 +102,26 @@
   "content_ja": "posts/PIControl/PIControljp.md",
   "content_mn": "posts/PIControl/PIControlmn.md"
 
+},
+{
+  "id": "p007",
+  "title": "Precise Timing Control on STM32F4",
+  "title_ja": "STM32F4におけるタイミング制御",
+  "title_mn": "STM32F4 дээрх Timing Control",
+  "summary": "Comparison of software-based delays and hardware-based timing methods on STM32F4, demonstrating why hardware timers and PWM are mandatory for deterministic timing and real-time control systems.",
+  "summary_ja": "STM32F4において、ソフトウェア遅延とハードウェアタイマ制御を比較し、決定論的タイミングおよびリアルタイム制御にハードウェアタイマとPWMが不可欠であることを示す。",
+  "summary_mn": "STM32F4 дээр software-based delay болон hardware-based timing аргуудыг харьцуулж, deterministic timing болон real-time control system-д hardware timer ба PWM яагаад зайлшгүй шаардлагатайг тайлбарлав。",
+  "date": "2025-12-22",
+  "tags": ["embedded", "stm32", "control"],
+  "type": "md",
+  "hero": "images/thumbnailembedded.png",
+  "theme": "embedded",
+  "content": "posts/PTC/PTC.md",
+  "content_ja": "posts/PTC/PTCJP.md",
+  "content_mn": "posts/PTC/PTCMN.md"
+}
+
+
 }
 
 
