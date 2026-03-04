@@ -1,0 +1,153 @@
+{
+  "brand": { "tag": "Портфолио" },
+
+  "nav": {
+    "home": "Нүүр",
+    "projects": "Projects",
+    "papers": "Mini Papers",
+    "tools": "Tools",
+    "about": "Тухай"
+  },
+
+  "hero": {
+    "kicker": "Power Electronics / Control / Embedded",
+    "title": "Портфолио + заах тэмдэглэл (simulation demo, mini-paper).",
+    "lead": "2 чиглэл: систем level projects + суралцсан зүйлсийн богино тайлбар."
+  },
+
+  "ui": {
+    "quickSearch": "Хурдан хайлт",
+    "pressSlash": "/ товчоор хайлт",
+    "searchPlaceholder": "Хайх: ж. laplace, PWM, PI тохиргоо",
+    "clear": "Цэвэрлэх",
+    "loading": "Ачааллаж байна…",
+    "noPosts": "Бичлэг алга.",
+    "noMatch": "Таарсан зүйл алга. Шүүлтүүрийг арилгаад үз.",
+    "back": "Буцах",
+    "copyLink": "Холбоос хуулах",
+    "browsePapers": "Mini Papers",
+    "viewProjects": "Projects",
+    "tags": "Tags",
+    "page": "Хуудас",
+    "prev": "Өмнөх",
+    "next": "Дараах"
+  },
+
+  "home": {
+    "essentials": "Товч ойлголтууд",
+    "pinned": "Pinned Projects",
+    "latest": "Сүүлийн mini-papers",
+    "browse": "Browse"
+  },
+
+  "stats": { "posts": "Posts", "tags": "Tags", "tools": "Tools" },
+
+  "papers": {
+    "title": "Mini Papers",
+    "lead": "Хайлттай богино заах тэмдэглэлүүд."
+  },
+
+  "projects": {
+    "title": "Projects (Portfolio)",
+    "lead": "2–3 system level project энд pin хийгээд архитектур → хэрэгжилт → баталгаажуулалт → хязгаар → үр дүнг харуул.",
+    "howtoTitle": "Хэрэглэх заавар",
+    "howtoBody": "Төсөл бүрт architecture → implementation → validation → limits → results заавал. Mini papers-ийг reference болгож холбоно.",
+    "milestones": "Milestones",
+    "proof": "Ашигласан материал",
+    "samples": {
+      "inv_stack": {
+        "title": "3-фаз инвертер control stack (10–20 kW)",
+        "meta": "dq current control • SVPWM • хамгаалалт • validation",
+        "desc": "Систем түвшний архитектур: sampling, current loop, modulation, dead-time comp, хэмжилт дээр суурилсан tuning.",
+        "ms1": "Model + loop design",
+        "ms2": "Embedded хэрэгжилт",
+        "ms3": "Validation + limits",
+        "p1": "Bode + phase margin",
+        "p2": "Step response + ripple",
+        "p3": "Scope captures (Id/Iq, Vdc, PWM)"
+      },
+      "dual_mcu": {
+        "title": "Dual MCU safety controller",
+        "meta": "safety concept • watchdog • fail-safe",
+        "desc": "Monitor MCU + main MCU, fault injection тесттэй safety архитектурын demo.",
+        "ms1": "Requirements + state",
+        "ms2": "HW/FW prototype",
+        "ms3": "Fault injection report",
+        "p1": "Fault tree + state diagram",
+        "p2": "Injected-fault logs + timing",
+        "p3": "Reset / latched shutdown"
+      },
+      "buck_current": {
+        "title": "Current-controlled buck (chopper)",
+        "meta": "2-switch 1-inductor • 10 kHz • current loop",
+        "desc": "Baseline model + guide: plant, modulation scaling, tuning алхам.",
+        "ms1": "PSIM model",
+        "ms2": "Controller + scaling",
+        "ms3": "Writeup",
+        "p1": "Duty scaling vs Vdc",
+        "p2": "Inductor current transient",
+        "p3": "Stability margins"
+      }
+    }
+  },
+
+  "tools": {
+    "title": "Engineering Tools",
+    "lead": "Control design, modeling-д зориулсан жижиг хэрэгслүүд.",
+    "bode": "Bode Plot",
+    "bodeSub": "G(s)=N(s)/D(s) тасралтгүй Bode plot. Коэффициент оруул.",
+    "num": "Numerator coefficients (highest → constant)",
+    "den": "Denominator coefficients (highest → constant)",
+    "fmin": "f_min (Hz)",
+    "fmax": "f_max (Hz)",
+    "points": "Points (log sweep)",
+    "delay": "Delay T_d (s) (phase only)",
+    "plot": "Plot",
+    "reset": "Reset",
+    "bodeHelp": "<b>RL:</b> G(s)=1/(L·s+R) → Num [1], Den [L, R]<br/><b>PI:</b> (Kp·s+Ki)/s → Num [Kp, Ki], Den [1, 0]",
+
+    "laplace": "Laplace Helper",
+    "laplaceSub": "Common pairs + 2nd-order (ωn, ζ) + step estimates.",
+    "laplaceHelp": "1 → 1/s, t → 1/s², e^{-a t} → 1/(s+a), sin(ωt) → ω/(s²+ω²), cos(ωt) → s/(s²+ω²)",
+    "wn": "ωn (rad/s)",
+    "zeta": "ζ",
+    "compute": "Compute",
+    "canonical": "Canonical form",
+    "poles": "Poles",
+    "stepEst": "Step estimates",
+
+    "euler": "Euler / Complex Helper",
+    "eulerSub": "Rectangular ↔ polar, мөн e^{jθ}.",
+    "result": "Result",
+    "computeEj": "Compute e^{jθ}",
+    "eulerHelp": "Rect → Polar: r=√(a²+b²), θ=atan2(b,a). Polar → Rect: a=r cosθ, b=r sinθ."
+  },
+
+  "about": {
+    "title": "About",
+    "body": "Портфолио + суралцах тэмдэглэл: Projects, validation notes, Mini Papers."
+  },
+
+ "basics": [
+  {
+    "title": "Математик",
+    "body": "<p>Инженерийн шинжилгээ нь дифференциал тэгшитгэл, Лапласын хувиргалт, шугаман алгебр зэрэг математик хэрэгслүүдэд тулгуурладаг. Эдгээр аргууд нь динамик системийг дамжуулах функц, давтамжийн хариу, тогтвортой байдлын шинжилгээг ашиглан загварчлах, шинжлэх, зохион бүтээх боломжийг олгодог.</p>"
+  },
+  {
+    "title": "Физик",
+    "body": "<p>Физикийн хуулиуд нь цахилгаан болон механик системүүд хэрхэн ажиллахыг тодорхойлдог. Энергийн хадгалалт, цахилгаан соронзон орон, индукцлэл, багтаамж, хагас дамжуулагчийн шилжилт зэрэг ойлголтууд нь хүчний электроникийн хөрвүүлэгчүүд хэрхэн ажиллахыг тодорхойлдог.</p>"
+  },
+  {
+    "title": "Тоног төхөөрөмж",
+    "body": "<p>Тоног төхөөрөмж нь онолын загварыг бодит системд хэрэгжүүлдэг. Үүнд хүчний хагас дамжуулагч элементүүд, гейт драйвер, мэдрэгч, пассив элементүүд, PCB загварчлал зэрэг орно. Дулааны шинж чанар, дуу чимээ, хамгаалалтын схем, үр ашиг зэрэг нь системийн найдвартай ажиллагаанд ихээхэн нөлөөлдөг.</p>"
+  },
+  {
+    "title": "Програм хангамж",
+    "body": "<p>Суулгагдсан програм хангамж нь тоног төхөөрөмжийг бодит цаг хугацаанд удирддаг. Микроконтроллер болон DSP нь удирдлагын алгоритмуудыг гүйцэтгэж, PWM үүсгэх, ADC дээж авахыг синхрончлох, хамгаалалтын логикийг хэрэгжүүлдэг. Тодорхой хугацааны удирдлага болон үр ашигтай код нь тогтвортой удирдлагын системд зайлшгүй шаардлагатай.</p>"
+  },
+  {
+    "title": "Баталгаажуулалт",
+    "body": "<p>Баталгаажуулалт нь онолын загварыг бодит ажиллагаатай харьцуулах үйл явц юм. Үүнд симуляци, лабораторийн туршилт, гэмтлийн туршилт зэрэг орно. Баталгаажуулалт нь зөрүүг илрүүлж, тохируулга хийхэд тусалж, системийн гүйцэтгэл болон аюулгүй байдалд итгэлцлийг нэмэгдүүлдэг.</p>"
+  }
+]
+}
