@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DLUSHKNE</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="color-scheme" content="dark light" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand" role="banner">
+      <a class="brand-link" href="#/home" aria-label="DLUSHKNE Home">
+        <div class="logo" aria-hidden="true">D</div>
+        <div class="brand-text">
+          <div class="brand-name">DLUSHKNE</div>
+          <div id="brandTag" class="brand-tag"></div>
+        </div>
+      </a>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#/home" class="nav-link"></a>
+      <a href="#/projects" class="nav-link"></a>
+      <a href="#/papers" class="nav-link"></a>
+      <a href="#/tools" class="nav-link"></a>
+      <a href="#/about" class="nav-link"></a>
+    </nav>
+
+    <div class="top-actions">
+      <button id="darkToggle" class="iconbtn" title="Theme" aria-label="Toggle theme">◐</button>
+
+      <div class="lang">
+        <button id="langToggle" class="iconbtn" aria-haspopup="true" aria-expanded="false">EN</button>
+        <div id="langMenu" class="lang-menu hidden" role="menu"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <!-- HOME -->
+    <section id="homeView" class="view">
+      <div class="hero card">
+        <div class="hero-left">
+          <div id="heroKicker" class="kicker"></div>
+          <h1 id="heroTitle" class="hero-title"></h1>
+          <p id="heroLead" class="hero-lead"></p>
+
+          <div class="hero-ctas">
+            <button id="ctaProjects" class="btn"></button>
+            <button id="ctaPapers" class="btn ghost"></button>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="stats">
+            <div class="stat">
+              <div id="statPosts" class="stat-num">0</div>
+              <div id="statPostsLbl" class="stat-lbl"></div>
+            </div>
+            
+            <div class="stat">
+                <div class="stat-num" id="statLatest">-</div>
+                <div class="stat-lbl" id="statLatestLbl">Latest Update</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">3</div>
+              <div id="statToolsLbl" class="stat-lbl"></div>
+            </div>
+          </div>
+
+          <div class="card side">
+            <div id="sideTitle" class="side-title"></div>
+            <div id="sideHint" class="side-hint"></div>
+
+            <div class="search">
+              <input id="qHome" type="search" />
+              <button id="clearQHome" class="btn ghost smallbtn"></button>
+            </div>
+
+           
+          </div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <section class="card">
+          <div class="card-head">
+            <h2 id="essentialsTitle" class="h2"></h2>
+          </div>
+          <div id="basicsMini" class="mini"></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h2 id="pinnedTitle" class="h2"></h2>
+          </div>
+          <div id="pinnedProjects" class="pins"></div>
+        </section>
+      </div>
+
+      <section class="card">
+        <div class="card-head">
+          <h2 id="recentTitle" class="h2"></h2>
+        </div>
+        <div id="featuredGrid" class="featured"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2 id="homeBrowseTitle" class="h2"></h2>
+        </div>
+        <div id="titleList" class="titles"></div>
+      </section>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projectsView" class="view hidden"></section>
+
+    <!-- PAPERS -->
+    <section id="papersView" class="view hidden"></section>
+
+    <!-- ARTICLE -->
+    <section id="articleView" class="view hidden"></section>
+
+    <!-- TOOLS -->
+    <section id="toolsView" class="view hidden"></section>
+
+    <!-- TAGS -->
+    <section id="tagsView" class="view hidden"></section>
+
+    <!-- ABOUT -->
+    <section id="aboutView" class="view hidden"></section>
+  </main>
+
+  <!-- Basics overlay -->
+  <div id="basicsOverlay" class="overlay hidden" aria-hidden="true">
+    <div class="overlay-bg" tabindex="-1"></div>
+    <div class="overlay-card" role="dialog" aria-modal="true">
+      <div class="overlay-head">
+        <div id="basicTitle" class="overlay-title"></div>
+        <button id="basicClose" class="iconbtn" aria-label="Close">✕</button>
+      </div>
+      <div id="basicBody" class="overlay-body"></div>
+
+      <div class="overlay-peeks">
+        <button id="prevPeek" class="peek" type="button">
+          <div class="peek-k">Prev</div>
+          <div id="prevTitle" class="peek-t"></div>
+        </button>
+        <button id="nextPeek" class="peek" type="button">
+          <div class="peek-k">Next</div>
+          <div id="nextTitle" class="peek-t"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="muted">© <span id="year"></span> DLUSHKNE</div>
+  </footer>
+
+  <!-- libs (for Tools + markdown) -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.33.0/plotly.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<!-- Pyodide (Python in browser) -->
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+
+<!-- Tools -->
+<script src="js/tools/cas.js"></script>
+<script src="js/tools/bode.js"></script>
+<script src="js/tools/euler.js"></script>
+<script src="js/tools/laplace_helper.js"></script>
+<!-- Your SPA -->
+<script src="js/app.js"></script>
+</body>
+</html>
