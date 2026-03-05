@@ -723,13 +723,25 @@ async function renderArticle(id){
 /* =========================
    About / Tags / Tools
    ========================= */
-function renderAbout(){
+async function renderAbout(){
   const el = $('#aboutView');
   if(!el) return;
+
+  const L = getLang();
+  const url =
+    (L === 'ja') ? 'content/about/ja.md' :
+    (L === 'mn') ? 'content/about/mn.md' :
+                  'content/about/en.md';
+
+  let md = await fetchMarkdownSafe(url);
+  if(!md) md = t('about.body') || ''; // fallback if md missing
+
+  const bodyHtml = marked.parse(md).replaceAll('<a href="','<a target="_blank" rel="noopener noreferrer" href="');
+
   el.innerHTML = `
     <div class="card" style="padding:22px">
-      <h2 style="margin:0 0 8px">${escapeHtml(t('about.title'))}</h2>
-      <p style="margin:0;color:var(--muted);line-height:1.7">${escapeHtml(t('about.body'))}</p>
+      <h2 style="margin:0 0 8px">${escapeHtml(t(''))}</h2>
+      <div style="margin:0;color:var(--muted);line-height:1.7">${bodyHtml}</div>
       <div style="margin-top:14px">
         <button class="btn" onclick="go('home')">${escapeHtml(t('ui.back'))}</button>
       </div>
@@ -1130,4 +1142,5 @@ function escapeHtml(s){
     .replaceAll('"','&quot;')
     .replaceAll("'","&#39;");
 }
+
 function escapeAttr(s){ return escapeHtml(s).replaceAll('\n',' '); }
