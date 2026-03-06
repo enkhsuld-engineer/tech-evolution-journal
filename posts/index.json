@@ -119,6 +119,23 @@
   "content": "posts/PTC/PTC.md",
   "content_ja": "posts/PTC/PTCJP.md",
   "content_mn": "posts/PTC/PTCMN.md"
+},
+{
+  "id": "p008",
+  "title": "Closed-Loop Voltage and Current Control of a Buck Converter",
+  "title_ja": "降圧コンバータの電圧・電流閉ループ制御",
+  "title_mn": "Buck converter-ийн хүчдэл ба гүйдлийн хаалттай хүрдний удирдлага",
+  "summary": "Study of a cascaded control structure for a DC-DC buck converter using an outer voltage loop and an inner current loop with PI controllers. The work demonstrates how cascaded control improves voltage regulation, current tracking, and overall system stability through simulation.",
+  "summary_ja": "外側の電圧ループと内側の電流ループを持つカスケードPI制御を用いたDC-DC降圧コンバータの制御構造を検討する。シミュレーションにより、カスケード制御が電圧レギュレーション、電流追従性、およびシステム安定性を改善することを示す。",
+  "summary_mn": "DC-DC buck converter-ийн каскад удирдлагын бүтцийг судалсан. Гадна хүчдэлийн цикл ба дотор гүйдлийн циклийг PI контроллероор хэрэгжүүлж, симуляцаар voltage regulation, current tracking системийн тогтвортой байдлыг сайжруулж байгааг харуулсан.",
+  "date": "2026-03-06",
+  "tags": ["power", "control", "dc-dc"],
+  "type": "md",
+  "hero": "images/thumbnailelectronic.png",
+  "theme": "electric",
+  "content": "posts/closedloop/en.md",
+  "content_ja": "posts/closedloop/ja.md",
+  "content_mn": "posts/closedloop/mn.md"
 }
 
 
