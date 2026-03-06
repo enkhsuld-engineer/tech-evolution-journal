@@ -105,7 +105,7 @@
 },
 {
   "id": "p007",
-  "title": "Precise Timing Control on STM32F4",
+  "title": "Deterministic Timing Control on STM32F4",
   "title_ja": "STM32F4におけるタイミング制御",
   "title_mn": "STM32F4 дээрх Timing Control",
   "summary": "Comparison of software-based delays and hardware-based timing methods on STM32F4, demonstrating why hardware timers and PWM are mandatory for deterministic timing and real-time control systems.",
