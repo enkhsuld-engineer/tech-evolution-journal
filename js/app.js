@@ -8,14 +8,13 @@ let titlePage = 1;
 const $ = s => document.querySelector(s);
 const uniq = a => Array.from(new Set(a));
 /* =========================
-   Language (UI strings in /i18n/*.json)
+   Language 
    ========================= */
 const LANG_KEY = 'dl-lang';
 function getLang(){ return localStorage.getItem(LANG_KEY) || 'en'; }
 function setLang(v){ localStorage.setItem(LANG_KEY, v); }
 
 function t(key){
-  // nested key support: "tools.title"
   const get = (obj, path) => path.split('.').reduce((o,k)=> (o && o[k] != null) ? o[k] : null, obj);
   const v = get(I18N, key);
   return (typeof v === 'string') ? v : key;
@@ -28,7 +27,6 @@ async function loadI18n(){
     if(!res.ok) throw new Error('i18n load failed');
     I18N = await res.json();
   }catch(_){
-    // fallback to en if missing
     const res = await fetch(`i18n/en.json`, { cache:'no-store' });
     I18N = res.ok ? await res.json() : {};
   }
@@ -72,7 +70,6 @@ async function loadPosts(){
   POSTS.sort((a,b) => (a.date < b.date ? 1 : -1));
 }
 async function loadProjects(){
-  const today = todayTokyoISO();
 
   PROJECTS = [
     {
@@ -82,12 +79,10 @@ async function loadProjects(){
       meta_key:'projects.pj.inv_stack.meta',
       desc_key:'projects.pj.inv_stack.desc',
 
-      // NEW: status
       phase_key:'projects.phases.not_started',
       progress: 0,
-      last_update: today,
+      last_update:'2026-03-05',
 
-      // NEW: markdown doc paths
       content: {
         en: 'content/projects/inv-stack/en.md',
         ja: 'content/projects/inv-stack/ja.md',
@@ -103,7 +98,7 @@ async function loadProjects(){
 
       phase_key:'projects.phases.not_started',
       progress: 0,
-      last_update: today,
+      last_update:'2026-03-05',
 
       content: {
         en: 'content/projects/dual-mcu/en.md',
@@ -120,7 +115,7 @@ async function loadProjects(){
 
       phase_key:'projects.phases.not_started',
       progress: 0,
-      last_update: today,
+      last_update:'2026-03-05',
 
       content: {
         en: 'content/projects/buck-current/en.md',
@@ -136,7 +131,6 @@ async function loadProjects(){
    ========================= */
 function tagClass(tag){
   const s = String(tag||'').toLowerCase();
-  // You can extend these rules freely
   const isPower = ['power','pwr','inverter','buck','boost','dc','ac','pwm','sv','svm','sine','rectifier','chopper'].some(k=>s.includes(k));
   const isControl = ['control','pi','pid','dq','bode','loop','stability','margin','observer','pll','droop'].some(k=>s.includes(k));
   const isEmbedded = ['embedded','mcu','dsp','stm32','ti','c2000','firmware','interrupt','timer','adc','can'].some(k=>s.includes(k));
@@ -418,7 +412,6 @@ function renderHomePosts(){
       card.onkeydown = (e)=>{ if(e.key==='Enter') go('article', id); };
     });
 
-    // tag clicks inside cards
     featuredGrid.querySelectorAll('button[data-tag]').forEach(btn=>{
       btn.onclick = (e)=>{
         e.stopPropagation();
@@ -780,7 +773,7 @@ async function renderAbout(){
 
   el.innerHTML = `
     <div class="card" style="padding:22px">
-      <h2 style="margin:0 0 8px">${escapeHtml(t('about.title'))}</h2>
+      <h2 style="margin:0 0 8px">${escapeHtml(t(''))}</h2>
       <div style="margin:0;color:var(--muted);line-height:1.7">${bodyHtml}</div>
       <div style="margin-top:14px">
         <button class="btn" onclick="go('home')">${escapeHtml(t('ui.back'))}</button>
@@ -933,6 +926,7 @@ function parseHash(){
 }
 
 function updateHash(){
+   
   const qs = new URLSearchParams();
   if(state.q) qs.set('q', state.q);
   if(state.tag) qs.set('tag', state.tag);
@@ -1165,7 +1159,6 @@ document.addEventListener('keydown', e=>{
 });
 
 (function boot(){
-  // safe init sequence
   (async ()=>{
     await loadI18n();
     await loadProjects();
@@ -1190,4 +1183,5 @@ function escapeHtml(s){
     .replaceAll('"','&quot;')
     .replaceAll("'","&#39;");
 }
+
 function escapeAttr(s){ return escapeHtml(s).replaceAll('\n',' '); }
