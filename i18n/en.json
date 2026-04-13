@@ -68,8 +68,8 @@
 
   "pj": {
     "inv_stack": {
-      "title": "3-Phase Inverter Control Stack (5-10 kW class)",
-      "meta": "dq current control • SVPWM • validation",
+      "title": "3-Phase Inverter Control Stack (High kW class)",
+      "meta": "dq current control • SVPWM • PLL control",
       "desc": "System-level inverter control architecture including sampling chain, dq current control loops, modulation scaling, dead-time compensation, and measurement-driven tuning."
     },
 
