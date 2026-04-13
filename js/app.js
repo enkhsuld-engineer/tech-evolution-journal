@@ -315,8 +315,24 @@ async function loadProjectDoc(p, host){
    ========================= */
 function renderStats(){
   const posts = POSTS.length;
-  const latest = POSTS[0]?.date || "-";
   const tools = 3;
+
+  const latestPost = POSTS
+    .map(p => p.date)
+    .filter(Boolean)
+    .sort()
+    .reverse()[0] || null;
+
+  const latestProject = PROJECTS
+    .map(p => p.last_update)
+    .filter(Boolean)
+    .sort()
+    .reverse()[0] || null;
+
+  const latest = [latestPost, latestProject]
+    .filter(Boolean)
+    .sort()
+    .reverse()[0] || "-";
 
   const a = $('#statPosts');
   if(a) a.textContent = String(posts);
