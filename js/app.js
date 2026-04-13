@@ -79,9 +79,9 @@ async function loadProjects(){
       meta_key:'projects.pj.inv_stack.meta',
       desc_key:'projects.pj.inv_stack.desc',
 
-      phase_key:'projects.phases.not_started',
-      progress: 0,
-      last_update:'2026-03-05',
+      phase_key:'projects.phases.complete',
+      progress: 100,
+      last_update:'2026-04-13',
 
       content: {
         en: 'content/projects/inv-stack/en.md',
