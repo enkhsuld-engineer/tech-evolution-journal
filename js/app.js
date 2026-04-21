@@ -96,9 +96,9 @@ async function loadProjects(){
       meta_key:'projects.pj.dual_mcu.meta',
       desc_key:'projects.pj.dual_mcu.desc',
 
-      phase_key:'projects.phases.not_started',
-      progress: 0,
-      last_update:'2026-03-05',
+      phase_key:'projects.phases.validation',
+      progress: 75,
+      last_update:'2026-04-21',
 
       content: {
         en: 'content/projects/dual-mcu/en.md',
