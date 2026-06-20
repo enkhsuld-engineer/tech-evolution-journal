@@ -380,14 +380,16 @@ function renderHomePosts(){
   const titleList = $('#titleList');
 
   const filtered = POSTS
-    .filter(p=> matchesSearch(p, state.q))
-    .filter(p=> matchesTag(p, state.tag));
+    .filter(p => p.category === 'mini-paper')
+    .filter(p => matchesSearch(p, state.q))
+    .filter(p => matchesTag(p, state.tag));
 
   if(!POSTS.length){
     if(featuredGrid) featuredGrid.innerHTML = `<div class="card" style="grid-column:1/-1;padding:22px">${escapeHtml(t('ui.loading'))}</div>`;
     if(titleList) titleList.innerHTML = '';
     return;
   }
+
   if(!filtered.length){
     if(featuredGrid) featuredGrid.innerHTML = `<div class="card" style="grid-column:1/-1;padding:22px">${escapeHtml(state.q||state.tag ? t('ui.noMatch') : t('ui.noPosts'))}</div>`;
     if(titleList) titleList.innerHTML = '';
@@ -395,6 +397,7 @@ function renderHomePosts(){
   }
 
   const featured = filtered.slice(0,3);
+
   if(featuredGrid){
     featuredGrid.innerHTML = featured.map(p=>{
       const title = pickByLang(p,'title');
@@ -402,6 +405,7 @@ function renderHomePosts(){
       const tags = tagsCompact(p.tags, 3);
       const thumb = p.hero ? `<img src="${escapeAttr(p.hero)}" alt="" loading="lazy">` : '';
       const fullSummary = summary || '';
+
       return `
         <article class="post" data-id="${escapeAttr(p.id)}" tabindex="0" title="${escapeAttr(fullSummary)}">
           <div class="thumb">${thumb}</div>
@@ -417,7 +421,7 @@ function renderHomePosts(){
             <div class="tagrow under-desc">
               ${tags}
             </div>
-</div>
+          </div>
         </article>
       `;
     }).join('');
@@ -444,13 +448,16 @@ function renderHomePosts(){
   const rest = filtered.slice(3);
   const per = 10;
   const totalPages = Math.ceil(rest.length / per) || 1;
+
   if(titlePage > totalPages) titlePage = totalPages;
+
   const start = (titlePage - 1) * per;
   const slice = rest.slice(start, start + per);
 
   if(titleList){
     titleList.innerHTML = slice.map(p=>{
       const title = pickByLang(p,'title');
+
       return `
         <div class="title-item" data-id="${escapeAttr(p.id)}" tabindex="0">
           <div class="title-text">${escapeHtml(title)}</div>
@@ -467,8 +474,10 @@ function renderHomePosts(){
           <button class="btn" id="nextPage" ${titlePage===totalPages?'disabled':''}>${escapeHtml(t('ui.next'))}</button>
         </div>
       `;
+
       const prev = $('#prevPage');
       const next = $('#nextPage');
+
       if(prev) prev.onclick = ()=>{ titlePage--; renderHomePosts(); };
       if(next) next.onclick = ()=>{ titlePage++; renderHomePosts(); };
     }
@@ -480,7 +489,6 @@ function renderHomePosts(){
     });
   }
 }
-
 function buildTagBar(){
   const bar = $('#tagBar');
   if(!bar) return;
@@ -531,7 +539,8 @@ function renderPapers(){
     <div class="titles" id="papersList" style="margin-top:12px"></div>
   `;
 
-  const all = uniq(POSTS.flatMap(p=>p.tags||[])).sort();
+  const miniPosts = POSTS.filter(p => p.category === 'mini-paper');
+  const all = uniq(miniPosts.flatMap(p=>p.tags||[])).sort();
   const tagBar = $('#tagBarPapers');
   if(tagBar){
     const max = 12;
@@ -571,8 +580,9 @@ function renderPapers(){
 
   const list = $('#papersList');
   const filtered = POSTS
-    .filter(p=> matchesSearch(p, state.q))
-    .filter(p=> matchesTag(p, state.tag));
+  .filter(p => p.category === 'mini-paper')
+  .filter(p => matchesSearch(p, state.q))
+  .filter(p => matchesTag(p, state.tag));
 
   if(!POSTS.length){
     if(list) list.innerHTML = `<div class="card" style="padding:22px">${escapeHtml(t('ui.loading'))}</div>`;
@@ -610,7 +620,38 @@ function renderPapers(){
     };
   });
 }
+function renderResearchPapers(){
+  const el = $('#researchPapersView');
+  if(!el) return;
 
+  const researchPosts = POSTS
+    .filter(p => p.category === 'research-paper')
+    .filter(p => matchesSearch(p, state.q))
+    .filter(p => matchesTag(p, state.tag));
+
+  el.innerHTML = `
+    <div class="card" style="padding:20px">
+      <h2 style="margin:0 0 6px">Research Papers</h2>
+      <p style="margin:0;color:var(--muted)">
+        Academic papers, IEEE publications, conference papers and journal articles.
+      </p>
+    </div>
+
+    <div class="titles" style="margin-top:12px">
+      ${researchPosts.map(p => `
+        <div class="title-item" data-id="${escapeAttr(p.id)}" tabindex="0">
+          <div class="title-text">${escapeHtml(pickByLang(p,'title'))}</div>
+          <div class="title-date">${escapeHtml(p.date || '')}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  el.querySelectorAll('[data-id]').forEach(row=>{
+    row.onclick = ()=> go('article', row.dataset.id);
+    row.onkeydown = (e)=>{ if(e.key==='Enter') go('article', row.dataset.id); };
+  });
+}
 /* =========================
    Projects page
    ========================= */
@@ -916,7 +957,7 @@ if(active === 'cas')  window.DLTOOLS.cas.wire(ctxTools());
    Routing
    ========================= */
 function show(viewId){
-  ['homeView','projectsView','papersView','articleView','aboutView','tagsView','toolsView']
+  ['homeView','projectsView','papersView','researchPapersView','articleView','aboutView','tagsView','toolsView']
     .forEach(id=>{
       const el = document.getElementById(id);
       if(el) el.classList.toggle('hidden', id !== viewId);
@@ -934,6 +975,7 @@ function parseHash(){
   if(parts[0]==='home'){ state.route='home'; state.articleId=null; }
   else if(parts[0]==='projects'){ state.route='projects'; state.articleId=null; projectsState.active = parts[1] || projectsState.active; }
   else if(parts[0]==='papers'){ state.route='papers'; state.articleId=null; }
+  else if(parts[0]==='research-papers'){state.route='research-papers';state.articleId=null;}
   else if(parts[0]==='about'){ state.route='about'; state.articleId=null; }
   else if(parts[0]==='tags'){ state.route='tags'; state.articleId=null; }
   else if(parts[0]==='tools'){ state.route='tools'; state.articleId=null; }
@@ -950,6 +992,7 @@ function updateHash(){
   let base = '#/home';
   if(state.route==='projects') base = '#/projects' + (projectsState.active ? `/${projectsState.active}` : '');
   else if(state.route==='papers') base = '#/papers';
+  else if(state.route==='research-papers') base = '#/research-papers';
   else if(state.route==='tools') base = '#/tools';
   else if(state.route==='tags') base = '#/tags';
   else if(state.route==='about') base = '#/about';
@@ -974,6 +1017,7 @@ function setActiveNav(){
       (r==='home' && href==='#/home') ||
       (r==='projects' && href==='#/projects') ||
       (r==='papers' && href==='#/papers') ||
+      (r==='research-papers' && href==='#/research-papers') ||
       (r==='tools' && href==='#/tools') ||
       (r==='about' && href==='#/about');
     a.classList.toggle('active', hit);
@@ -989,6 +1033,7 @@ function applyStaticTexts(){
     if(href==='#/home') a.textContent = t('nav.home');
     if(href==='#/projects') a.textContent = t('nav.projects');
     if(href==='#/papers') a.textContent = t('nav.papers');
+    if(href==='#/research-papers') a.textContent = 'Research';
     if(href==='#/tools') a.textContent = t('nav.tools');
     if(href==='#/about') a.textContent = t('nav.about');
   });
@@ -1138,6 +1183,12 @@ async function renderNow(){
     return;
   }
 
+  if(state.route==='research-papers'){
+  show('researchPapersView');
+  renderResearchPapers();
+  return;
+  }
+  
   if(state.route==='article' && state.articleId){
     await renderArticle(state.articleId);
     show('articleView');
