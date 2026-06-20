@@ -14,7 +14,9 @@
     "content": "posts/buck_converter/buck_converter_en.md",
     "content_ja": "posts/buck_converter/buck_converter_ja.md",
     "content_mn": "posts/buck_converter/buck_converter_mn.md",
+    "category": "mini-paper",
     "theme":"electric"
+    
   },
   {
   "id": "p002",
@@ -31,6 +33,7 @@
   "content": "posts/boost_converter/basic_boost_en.md",
   "content_ja": "posts/boost_converter/basic_boost_jp.md",
   "content_mn": "posts/boost_converter/basic_boost_mn.md",
+   "category": "mini-paper",
   "theme":"electric"
 },
   {
@@ -48,6 +51,7 @@
   "content": "posts/buck_boost_converter/buck_boost_converter_en.md",
   "content_ja": "posts/buck_boost_converter/buck_boost_converter_jp.md",
   "content_mn": "posts/buck_boost_converter/buck_boost_converter_mn.md",
+   "category": "mini-paper",
   "theme":"electric"
 },
 {
@@ -63,6 +67,7 @@
   "type": "md",
   "hero": "images/thumbnailtheory.png",
   "theme": "theory",
+   "category": "mini-paper",
   "content": "posts/laplace/laplace.md",
   "content_ja": "posts/laplace/laplace_jp.md",
   "content_mn": "posts/laplace/laplace_mn.md"
@@ -80,6 +85,7 @@
   "type": "md",
   "hero": "images/thumbnailtheory.png",
   "theme": "theory",
+   "category": "mini-paper",
   "content": "posts/transfer_function/transfer_function_en.md",
   "content_ja": "posts/transfer_function/transfer_function_jp.md",
   "content_mn": "posts/transfer_function/transfer_function_mn.md"
@@ -98,6 +104,7 @@
   "type": "md",
   "hero": "images/thumbnailtheory.png",
   "theme": "theory",
+   "category": "mini-paper",
   "content": "posts/PIControl/PIControl.md",
   "content_ja": "posts/PIControl/PIControljp.md",
   "content_mn": "posts/PIControl/PIControlmn.md"
@@ -116,6 +123,7 @@
   "type": "md",
   "hero": "images/thumbnailembedded.png",
   "theme": "embedded",
+   "category": "mini-paper",
   "content": "posts/PTC/PTC.md",
   "content_ja": "posts/PTC/PTCJP.md",
   "content_mn": "posts/PTC/PTCMN.md"
@@ -133,9 +141,19 @@
   "type": "md",
   "hero": "images/thumbnailelectronic.png",
   "theme": "electric",
+   "category": "mini-paper",
   "content": "posts/closedloop/en.md",
   "content_ja": "posts/closedloop/ja.md",
   "content_mn": "posts/closedloop/mn.md"
+},{
+  "id": "my-research-paper-01",
+  "date": "2026-06-20",
+  "type": "md",
+  "title": "Research Paper",
+  "summary": "Short explanation shown on the card.",
+  "tags": ["Research", "IEEE"],
+   "category": "research-paper",
+  "content": "posts/test/Paper.md"
 }
 
 
