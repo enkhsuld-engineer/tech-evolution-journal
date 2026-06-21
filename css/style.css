@@ -234,6 +234,7 @@ body{
   grid-template-columns:1fr 1fr;
   gap:14px;
   margin-top:14px;
+  margin-bottom: 14px;
 }
 @media (max-width: 860px){
   .grid2{ grid-template-columns:1fr; }
@@ -241,15 +242,16 @@ body{
 
 .mini{
   padding:14px 16px 16px 16px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:10px;
 }
+
 .mini-item{
   border:1px solid var(--border);
   background:transparent;
   color:var(--text);
-  border-radius:12px;
+  border-radius:10px;
   padding:9px 10px;
   cursor:pointer;
   font-weight:900;
@@ -279,6 +281,7 @@ body{
 
 .featured{
   padding:16px;
+  margin-bottom: 14px;
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   gap:12px;
