@@ -8,7 +8,7 @@ Most content is based on things I build, test, or model. The level of detail var
 
 - Projects and build logs
 - Mini papers (short technical notes, derivations, experiments, and observations)
-- Simulation models (PSIM/MATLAB/Typhoon HIL used to study system behavior and design)
+- Simulation models
 - Small tools used during analysis (for example transfer function or control related utilities)
 
 Some of the mini papers are written so that students or junior engineers can follow the reasoning and calculations step by step.
