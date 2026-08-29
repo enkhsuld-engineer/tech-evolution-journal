@@ -154,6 +154,18 @@
   "tags": ["Research", "IEEE"],
    "category": "research-paper",
   "content": "posts/test/Paper.md"
+},
+{
+  "id": "p009",
+  "title": "PWM Duty-Cycle Resolution in Digital Power Control",
+  "summary": "Study of digital PWM resolution, timer quantization, minimum pulse limits, and their effects on closed-loop power-electronics control.",
+  "date": "2026-08-20",
+  "tags": ["pwm", "control", "power-electronics"],
+  "hero": "images/thumbnailembedded.png",
+  "type": "md",
+  "content": "posts/pwm/pwmres.md",
+  "category": "mini-paper",
+  "theme": "embedded"
 }
 
 
