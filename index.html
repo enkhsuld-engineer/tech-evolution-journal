@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PORTFOLIO | DLUSHKNE</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/intro.css" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#292c31" />
+  <script src="js/intro.js" defer></script>
+</head>
+
+<body class="entry-pending">
+  <div id="entryScreen" class="entry-screen" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+    <div id="entryContent" class="entry-content">
+      <span class="entry-label">Altanbaatar Enkhsuld / PORTFOLIO</span>
+      <h1 id="welcomeTitle">WELCOME</h1>
+      <button id="entryEnter" class="entry-enter" type="button">Click anywhere to enter</button>
+      <p id="entryHint">or press any key</p>
+      <p id="entryStatus" class="entry-status" role="status"></p>
+    </div>
+    <button id="entrySkip" class="entry-skip" type="button">Skip intro</button>
+  </div>
+
+  <header class="topbar" data-intro-region>
+    <div class="brand" role="banner">
+      <a class="brand-link" href="#/home" aria-label="Portfolio home">
+        <div class="brand-text">
+          <div class="brand-name">PORTFOLIO</div>
+          <div class="brand-tag">Altanbaatar Enkhsuld</div>
+        </div>
+      </a>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#/home" class="nav-link"></a>
+      <a href="#/projects" class="nav-link"></a>
+      <a href="#/papers" class="nav-link"></a>
+      <a href="#/research-papers" class="nav-link">Research Papers</a>
+      <a href="#/tools" class="nav-link"></a>
+      <a href="#/about" class="nav-link"></a>
+    </nav>
+
+    <div class="top-actions">
+      <button id="darkToggle" class="iconbtn" title="Theme" aria-label="Toggle theme">◐</button>
+
+      <div class="lang">
+        <button id="langToggle" class="iconbtn" aria-haspopup="true" aria-expanded="false">EN</button>
+        <div id="langMenu" class="lang-menu hidden" role="menu"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <!-- HOME -->
+    <section id="homeView" class="view home-layout">
+      <div class="hero card" data-intro-region>
+        <div>
+          <div id="heroKicker" class="kicker"></div>
+          <h1 id="heroTitle" class="hero-title"></h1>
+          <p id="heroLead" class="hero-lead"></p>
+
+          <div class="hero-ctas">
+            <button id="ctaProjects" class="btn"></button>
+            <button id="ctaPapers" class="btn ghost"></button>
+          </div>
+        </div>
+
+        <span class="hero-index" aria-hidden="true">01 / ENGINEERING</span>
+      </div>
+
+      <section class="card home-projects" data-intro-region>
+        <div class="card-head">
+          <h2 id="pinnedTitle" class="h2"></h2>
+          <span class="section-index" aria-hidden="true">02</span>
+        </div>
+        <div id="pinnedProjects" class="pins"></div>
+      </section>
+
+      <section class="card home-notes" data-intro-region>
+        <div class="card-head">
+          <h2 id="recentTitle" class="h2"></h2>
+          <span class="section-index" aria-hidden="true">03</span>
+        </div>
+        <div id="featuredGrid" class="featured"></div>
+      </section>
+
+      <section class="card home-foundations" data-intro-region>
+        <div class="card-head">
+          <h2 id="essentialsTitle" class="h2"></h2>
+          <span class="section-index" aria-hidden="true">04</span>
+        </div>
+        <div id="basicsMini" class="mini"></div>
+      </section>
+
+      <section class="card home-browse" data-intro-region>
+        <div class="card-head">
+          <h2 id="homeBrowseTitle" class="h2"></h2>
+          <div id="archiveModes" class="archive-modes" role="group" aria-label="Archive view">
+            <button id="archiveListView" class="btn ghost smallbtn" type="button" data-archive-view="list" aria-controls="titleList" aria-pressed="false">List</button>
+            <button id="archiveGridView" class="btn ghost smallbtn" type="button" data-archive-view="grid" aria-controls="titleList" aria-pressed="true">Grid</button>
+          </div>
+        </div>
+        <div class="home-search">
+          <label id="sideTitle" for="qHome"></label>
+          <span id="sideHint" class="muted"></span>
+          <div class="search">
+            <input id="qHome" type="search" />
+            <button id="clearQHome" class="btn ghost smallbtn"></button>
+          </div>
+        </div>
+        <div id="titleList" class="titles"></div>
+      </section>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projectsView" class="view hidden"></section>
+
+    <!-- PAPERS -->
+    <section id="papersView" class="view hidden"></section>
+
+    <section id="researchPapersView" class="view hidden"></section>
+    
+    <!-- ARTICLE -->
+    <section id="articleView" class="view hidden"></section>
+
+    <!-- TOOLS -->
+    <section id="toolsView" class="view hidden"></section>
+
+    <!-- TAGS -->
+    <section id="tagsView" class="view hidden"></section>
+
+    <!-- ABOUT -->
+    <section id="aboutView" class="view hidden"></section>
+  </main>
+
+  <!-- Basics overlay -->
+  <div id="basicsOverlay" class="overlay hidden" aria-hidden="true">
+    <div class="overlay-bg" tabindex="-1"></div>
+    <div class="overlay-card" role="dialog" aria-modal="true">
+      <div class="overlay-head">
+        <div id="basicTitle" class="overlay-title"></div>
+        <button id="basicClose" class="iconbtn" aria-label="Close">✕</button>
+      </div>
+      <div id="basicBody" class="overlay-body"></div>
+
+      <div class="overlay-peeks">
+        <button id="prevPeek" class="peek" type="button">
+          <div class="peek-k">Prev</div>
+          <div id="prevTitle" class="peek-t"></div>
+        </button>
+        <button id="nextPeek" class="peek" type="button">
+          <div class="peek-k">Next</div>
+          <div id="nextTitle" class="peek-t"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="muted">© <span id="year"></span> DLUSHKNE</div>
+    <div class="footer-stats">
+      <button id="replayIntro" class="footer-replay" type="button">
+        <span aria-hidden="true">↻</span>
+        <span id="replayIntroLabel">Refresh</span>
+      </button>
+      <span><strong id="statPosts">0</strong> <span id="statPostsLbl"></span></span>
+      <span><strong id="statTools">5</strong> <span id="statToolsLbl"></span></span>
+      <span><span id="statLatestLbl"></span> <time id="statLatest"></time></span>
+    </div>
+  </footer>
+
+  <noscript>
+    <style>.entry-pending > .topbar,.entry-pending > .shell,.entry-pending > .footer{visibility:visible}#entryScreen{display:none}body.entry-pending{overflow:auto}</style>
+    <p class="shell">Enable JavaScript to browse projects, notes, and engineering tools.</p>
+  </noscript>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+      },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
+  <script src="js/tools/cas.js" defer></script>
+  <script src="js/tools/bode.js" defer></script>
+  <script src="js/tools/euler.js" defer></script>
+  <script src="js/tools/laplace_helper.js" defer></script>
+  <script src="js/tools/nyquist.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+
+</html>
