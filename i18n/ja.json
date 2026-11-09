@@ -1,0 +1,184 @@
+{
+  "entry": {
+    "welcome": "WELCOME",
+    "enter": "画面のどこかをクリックして入る",
+    "hint": "またはいずれかのキーを押す",
+    "skip": "イントロをスキップ",
+    "loading": "ポートフォリオを準備しています...",
+    "error": "読み込めませんでした。ページを更新するか、再試行してください。",
+    "retry": "再試行"
+  },
+
+  "nav": {
+    "home": "ホーム",
+    "projects": "Projects",
+    "papers": "Mini Papers",
+    "research": "研究",
+    "tools": "Tools",
+    "about": "About"
+  },
+
+  "hero": {
+    "kicker": "パワエレ／制御／組込み",
+    "title": "システムをつくり、学びを伝える。",
+    "lead": "設計からファームウェア、検証まで。開発プロジェクト、シミュレーションモデル、技術ノートをまとめています。"
+  },
+
+  "ui": {
+    "quickSearch": "技術ノートを検索",
+    "replayIntro": "更新",
+    "archiveView": "アーカイブの表示形式",
+    "listView": "リスト",
+    "gridView": "グリッド",
+    "carousel": "カルーセル",
+    "noArchivePosts": "この条件に一致する追加の記事はありません。上の最新記事をご覧ください。",
+    "pressSlash": " / で検索にフォーカス",
+    "searchPlaceholder": "検索：例）制御、PWM、PI調整",
+    "clear": "クリア",
+    "loading": "読み込み中…",
+    "noPosts": "まだ記事はありません。",
+    "noMatch": "一致がありません。フィルタ解除で再試行。",
+    "back": "戻る",
+    "copyLink": "リンクをコピー",
+    "browsePapers": "Mini Papers",
+    "viewProjects": "Projects",
+    "loadingTool": "技術ツールを読み込んでいます...",
+    "toolError": "ツールを読み込めませんでした。接続を確認して再試行してください。",
+    "mathError": "数式を表示できませんでした。LaTeXソースを表示しています。ページを更新して再試行してください。",
+    "tags": "タグ",
+    "page": "ページ",
+    "prev": "前へ",
+    "next": "次へ"
+  },
+
+  "home": {
+    "essentials": "基礎知識",
+    "pinned": "注目のプロジェクト",
+    "latest": "最新技術ノート",
+    "browse": "アーカイブを探す"
+  },
+
+  "stats": { "posts": "記事", "tags": "タグ", "tools": "ツール", "updated": "更新日" },
+
+  "papers": {
+    "title": "Mini Papers",
+    "lead": "検索できる技術ノート。理論・シミュレーション・実験を短く整理しています。"
+  },
+
+"projects": {
+  "title": "プロジェクト",
+  "onThisPage": "このページの内容",
+  "openFigure": "図を原寸で開く",
+  "documentError": "プロジェクト文書を読み込めませんでした。再試行してください。",
+  "documentFallback": "この文書は現在、英語で提供しています。画面の表示言語は変更されません。",
+  "lead": "長期的に取り組む技術開発プロジェクトです。各プロジェクトでは、アーキテクチャ、モデリング、ファームウェア実装、検証結果を記録します。",
+  "howtoTitle": "このページの見方",
+  "howtoBody": "各プロジェクトページは継続的に更新される技術ドキュメントです。概要欄には現在の状況を示し、詳細な技術内容はプロジェクト用Markdownファイルに記載します。",
+
+  "status": {
+    "phase": "フェーズ",
+    "lastUpdate": "最終更新",
+    "progress": "進捗"
+  },
+
+  "phases": {
+    "not_started": "未着手",
+    "design": "設計・構想",
+    "implementation": "実装",
+    "validation": "検証",
+    "complete": "完了"
+  },
+
+  "pj": {
+    "inv_stack": {
+      "title": "三相インバータ制御スタック",
+      "shortTitle": "三相インバータ",
+      "meta": "dq電流制御 • SVPWM • PLL制御",
+      "desc": "800 Vインバータのシミュレーション事例です。dq電流制御、フィードフォワード、非干渉化、SVPWMを扱います。実機への展開とデッドタイム補償は今後の課題です。"
+    },
+
+    "dual_mcu": {
+      "title": "デュアルMCU安全制御器",
+      "shortTitle": "デュアルMCU安全制御器",
+      "meta": "安全アーキテクチャ • ウォッチドッグ • フェールセーフ状態機械",
+      "desc": "独立した監視用MCUがメイン制御MCUを監督し、故障注入試験で評価する安全アーキテクチャの実証プロジェクト。"
+    },
+
+    "buck_current": {
+      "title": "電流制御バックコンバータ（チョッパ）基準構成",
+      "shortTitle": "電流制御バックコンバータ",
+      "meta": "2スイッチ • 1インダクタ • 10 kHz電流ループ",
+      "desc": "プラントモデルの導出、デューティ比スケーリング、電流ループの調整方法、および実装手順を整理した基準設計。"
+    }
+  }
+},
+
+  "tools": {
+    "plainText": "プレーンテキスト / コピー",
+    "parsed": "解析した式",
+    "steps": "計算手順",
+    "rectToPolar": "直交形式から極形式へ",
+    "polarToRect": "極形式から直交形式へ",
+    "laplaceSyntax": "対応: c、t^n（n は非負整数）、exp(a*t)、sin(w*t)、cos(w*t)、和、定数倍。乗算には * を使用します。対応する式は意図的に限定しています。",
+    "title": "Engineering Tools",
+    "lead": "制御設計・モデル化のための小ツール。",
+    "bode": "Bode Plot",
+    "bodeSub": "分子・分母の係数から連続時間系のゲインと位相を描画します。",
+    "num": "分子係数（高次→定数）",
+    "den": "分母係数（高次→定数）",
+    "fmin": "最小周波数 (Hz)",
+    "fmax": "最大周波数 (Hz)",
+    "points": "点数（log sweep）",
+    "delay": "時間遅れ (s、省略可)",
+    "plot": "Plot",
+    "reset": "Reset",
+    "bodeHelp": "<b>RL:</b> 分子 [1]、分母 [L, R]。<br/><b>PI:</b> 分子 [Kp, Ki]、分母 [1, 0]。各パラメータには数値を入力してください。",
+
+    "laplace": "Laplace Helper",
+    "laplaceSub": "基本ルールによるラプラス変換を数式と手順で表示します。",
+    "laplaceHelp": "<b>代表:</b> 1 → 1/s, t → 1/s², e^{-a t} → 1/(s+a), sin(ωt) → ω/(s²+ω²), cos(ωt) → s/(s²+ω²)",
+    "wn": "固有角周波数 ωn (rad/s)",
+    "zeta": "減衰比 ζ",
+    "compute": "Compute",
+    "canonical": "標準形",
+    "poles": "極",
+    "stepEst": "ステップ推定",
+
+    "euler": "Euler / Complex Helper",
+    "eulerSub": "複素数の直交形式と極形式を変換し、オイラーの公式を計算します。",
+    "result": "結果",
+    "computeEj": "オイラーの公式を計算",
+    "eulerHelp": "角度は度で入力してください。入力した形式に対応する変換ボタンを選択します。",
+    "nyquist": "Nyquist Diagram",
+    "nyquistSub": "Complex-plane stability plot for G(jω). Shows frequency response trajectory and the critical point (-1, 0).",
+    "nyquistHelp": "<b>Purpose:</b> Used to evaluate closed-loop stability using the Nyquist criterion.<br/><b>Interpretation:</b> If the curve encircles the point (-1,0), the closed loop may be unstable depending on open-loop poles."
+ 
+  },
+
+  "about": {
+    "body": "Altanbaatar Enkhsuldです。パワーエレクトロニクス分野で組込み制御ソフトウェアエンジニアとして働いています。電力変換、制御システム、ロボティクスに関心があります。\n\nこのポートフォリオでは、エンジニアリングのプロジェクト、シミュレーション、技術的な記事をまとめています。"
+  },
+
+ "basics": [
+  {
+    "title": "数学",
+    "body": "<p>工学解析は、微分方程式、ラプラス変換、線形代数などの数学的手法に基づいています。これらの手法により、動的システムを伝達関数、周波数応答、安定性解析を用いてモデル化・解析・設計することが可能になります。</p>"
+  },
+  {
+    "title": "物理",
+    "body": "<p>物理法則は、電気システムや機械システムがどのように動作するかを決定します。エネルギー保存、電磁場、インダクタンス、キャパシタンス、半導体スイッチングなどの概念は、パワーエレのコンバータなどがどのように動作するかを定義します。</p>"
+  },
+  {
+    "title": "ハードウェア",
+    "body": "<p>ハードウェアは理論設計を実際のシステムとして実装します。これにはパワーデバイス、ゲートドライバ、センサ、受動部品、PCBレイアウトなどが含まれます。熱特性、ノイズ、保護回路、効率などの要素はシステムの信頼性に大きく影響します。</p>"
+  },
+  {
+    "title": "ソフトウェア",
+    "body": "<p>組込みソフトウェアはハードウェアをリアルタイムで制御します。マイコンやDSPは制御アルゴリズムを実行し、PWM生成、ADCサンプリング同期、保護ロジックを実装します。決定論的なタイミングと効率的なコードは安定した制御システムに不可欠です。</p>"
+  },
+  {
+    "title": "検証",
+    "body": "<p>検証は理論設計と実際の動作を比較するプロセスです。これにはシミュレーション、ベンチテスト、故障試験などが含まれます。検証により差異が特定され、チューニングが行われ、システム性能と安全性への信頼性が高まります。</p>"
+  }
+]
+}

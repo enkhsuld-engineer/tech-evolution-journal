@@ -1,0 +1,181 @@
+{
+  "entry": {
+    "welcome": "WELCOME",
+    "enter": "Click anywhere to enter",
+    "hint": "or press any key",
+    "skip": "Skip intro",
+    "loading": "Preparing your portfolio...",
+    "error": "The portfolio could not load. Refresh or retry.",
+    "retry": "Retry"
+  },
+
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "papers": "Mini Papers",
+    "research": "Research",
+    "tools": "Tools",
+    "about": "About"
+  },
+
+  "hero": {
+    "kicker": "Power Electronics / Control / Embedded Systems",
+    "title": "Systems, built and explained.",
+    "lead": "Projects, simulation models, and technical notes, from system architecture to firmware and validation."
+  },
+
+  "ui": {
+    "quickSearch": "Search notes",
+    "replayIntro": "Refresh",
+    "archiveView": "Archive view",
+    "listView": "List",
+    "gridView": "Grid",
+    "carousel": "carousel",
+    "noArchivePosts": "No additional papers for this selection. See the recent papers above.",
+    "pressSlash": "Press / to focus",
+    "searchPlaceholder": "Search posts, e.g. droop, PWM, PI tuning",
+    "clear": "Clear",
+    "loading": "Loading posts...",
+    "noPosts": "No posts yet.",
+    "noMatch": "No matches. Try clearing filters.",
+    "back": "Back",
+    "copyLink": "Copy link",
+    "browsePapers": "Read mini papers",
+    "viewProjects": "Explore projects",
+    "loadingTool": "Loading engineering tool...",
+    "toolError": "This tool could not load. Check your connection and retry.",
+    "mathError": "Equations could not be typeset. LaTeX source is shown; refresh to retry.",
+    "tags": "Tags",
+    "page": "Page",
+    "prev": "Prev",
+    "next": "Next"
+  },
+
+  "home": {
+    "essentials": "Foundations",
+    "pinned": "Selected Projects",
+    "latest": "Recent Mini Papers",
+    "browse": "Explore the Archive"
+  },
+
+  "stats": { "posts": "posts", "tags": "Tags", "tools": "tools", "updated": "Updated" },
+
+  "papers": {
+    "title": "Mini Papers",
+    "lead": "Searchable teaching notes. Short, test-driven writeups with links and figures."
+  },
+"projects": {
+  "title": "Projects",
+  "onThisPage": "On this page",
+  "openFigure": "Open full-size figure",
+  "documentError": "This project document could not load. Please retry.",
+  "documentFallback": "This document is currently available in English. The surrounding interface remains in your selected language.",
+  "lead": "Long-term engineering builds. Each project documents architecture, modeling, firmware implementation, and validation results.",
+  "howtoTitle": "How to read projects",
+  "howtoBody": "Each project page is a living engineering document. The summary shows current status while the full technical documentation is written in the project markdown file.",
+
+  "status": {
+    "phase": "Phase",
+    "lastUpdate": "Last update",
+    "progress": "Progress"
+  },
+
+  "phases": {
+    "not_started": "Not started",
+    "design": "Architecture / Design",
+    "implementation": "Implementation",
+    "validation": "Validation",
+    "complete": "Completed"
+  },
+
+  "pj": {
+    "inv_stack": {
+      "title": "Three-Phase Inverter Control Stack",
+      "shortTitle": "Three-Phase Inverter",
+      "meta": "dq current control • SVPWM • PLL control",
+      "desc": "A simulation case study of an 800 V inverter, covering dq current control, feedforward, decoupling, and SVPWM. Hardware deployment and dead-time compensation remain future work."
+    },
+
+    "dual_mcu": {
+      "title": "Dual-MCU Safety Controller",
+      "shortTitle": "Dual-MCU Safety Controller",
+      "meta": "safety architecture • watchdog • fail-safe state machine",
+      "desc": "Experimental safety architecture using independent monitor MCU supervising the main control MCU with fault injection testing."
+    },
+
+    "buck_current": {
+      "title": "Current-Controlled Buck (Chopper) Reference Build",
+      "shortTitle": "Current-Controlled Buck",
+      "meta": "2-switch • 1-inductor • 10 kHz current loop",
+      "desc": "Clean baseline reference design showing plant modeling, duty scaling, current loop tuning, and implementation steps."
+    }
+  }
+},
+
+  "tools": {
+    "plainText": "Plain text / copy",
+    "parsed": "Parsed expression",
+    "steps": "Calculation steps",
+    "rectToPolar": "Rectangular to polar",
+    "polarToRect": "Polar to rectangular",
+    "laplaceSyntax": "Supported: c, t^n (nonnegative integer n), exp(a*t), sin(w*t), cos(w*t), sums and constant multiples. Use * for multiplication. This helper is intentionally limited.",
+    "title": "Engineering Tools",
+    "lead": "Small calculators to support control design and modeling (as well as students).",
+    "bode": "Bode Plot",
+    "bodeSub": "Plot continuous-time magnitude and phase from numerator and denominator coefficients.",
+    "num": "Numerator coefficients (highest power → constant)",
+    "den": "Denominator coefficients (highest power → constant)",
+    "fmin": "Minimum frequency (Hz)",
+    "fmax": "Maximum frequency (Hz)",
+    "points": "Points (log sweep)",
+    "delay": "Time delay (s, optional)",
+    "plot": "Plot",
+    "reset": "Reset",
+    "bodeHelp": "<b>RL plant:</b> numerator [1], denominator [L, R].<br/><b>PI controller:</b> numerator [Kp, Ki], denominator [1, 0]. Enter numeric values for these parameters.",
+
+    "laplace": "Laplace Calculator",
+    "laplaceSub": "Rule-based Laplace transforms with step-by-step equations.",
+    "laplaceHelp": "<b>Common pairs:</b> 1 → 1/s, t → 1/s², e^{-a t} → 1/(s+a), sin(ωt) → ω/(s²+ω²), cos(ωt) → s/(s²+ω²)",
+    "wn": "Natural frequency ωn (rad/s)",
+    "zeta": "Damping ratio ζ",
+    "compute": "Compute",
+    "canonical": "Canonical form",
+    "poles": "Poles",
+    "stepEst": "Step estimates",
+
+    "euler": "Euler / Complex Helper",
+    "eulerSub": "Convert complex numbers between rectangular and polar forms, or evaluate Euler's identity.",
+    "result": "Result",
+    "computeEj": "Evaluate Euler",
+    "eulerHelp": "Enter angles in degrees. Use the matching conversion button for the values you entered.",
+    "nyquist": "Nyquist Diagram",
+    "nyquistSub": "Complex-plane stability plot for G(jω). Shows frequency response trajectory and the critical point (-1, 0).",
+    "nyquistHelp": "<b>Purpose:</b> Used to evaluate closed-loop stability using the Nyquist criterion.<br/><b>Interpretation:</b> If the curve encircles the point (-1,0), the closed loop may be unstable depending on open-loop poles."
+  },
+
+  "about": {
+  "body": "I'm Altanbaatar Enkhsuld, an embedded control software engineer in the power electronics field. My interests include power conversion, control systems, and robotics.\n\nThis portfolio brings together my engineering projects, simulations, and technical writeups."
+},
+  "basics": [
+    {
+      "title": "Mathematics",
+      "body": "<p>Engineering analysis relies on mathematical tools such as differential equations, Laplace transforms, and linear algebra. These methods allow dynamic systems to be modeled, analyzed, and designed using transfer functions, frequency response, and stability analysis.</p>"
+    },
+    {
+      "title": "Physics",
+      "body": "<p>Physical laws govern how electrical and mechanical systems behave. Concepts such as energy conservation, electromagnetic fields, inductance, capacitance, and semiconductor switching define how power electronic converters operate.</p>"
+    },
+    {
+      "title": "Hardware",
+      "body": "<p>Hardware implements theoretical designs in real systems. This includes power devices, gate drivers, sensors, passive components, and PCB layout. Thermal behavior, noise, protection circuits, and efficiency considerations strongly influence system reliability.</p>"
+    },
+    {
+      "title": "Software",
+      "body": "<p>Embedded software controls hardware in real time. Microcontrollers and DSPs execute control algorithms, manage PWM generation, synchronize ADC sampling, and implement protection logic. Deterministic timing and efficient code are essential for stable control systems.</p>"
+    },
+    {
+      "title": "Validation",
+      "body": "<p>Validation tests theoretical designs against real-world behavior. This includes simulation, benchtop testing, and fault injection. Validation identifies discrepancies, guides tuning, and builds confidence in system performance and safety.</p>"
+    }
+]
+}
