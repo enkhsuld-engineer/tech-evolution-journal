@@ -3,7 +3,7 @@ It derives the ordinary duty resolution of edge-aligned and center-aligned PWM f
 The note then connects PWM quantization with proportional and integral control behavior, including residual error, count-boundary crossing, limit cycles, and anti-windup. Practical limits such as deadtime, gate-driver propagation delay, minimum pulse width, HIL input timing, and high-resolution PWM are also discussed. A worked example uses a 200 MHz timer, center-aligned PWM, and an 800 V DC input to show how switching frequency changes the achievable duty and voltage resolution.
 
 📄 **Download full paper (PDF)**  
-[Click here to view the English version](/tech-evolution-journal/documents/pwm/pwmres.pdf)
+[Click here to view the English version](/documents/pwm/pwmres.pdf)
 
 ---
 
